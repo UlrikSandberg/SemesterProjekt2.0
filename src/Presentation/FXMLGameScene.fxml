@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane id="AnchorPane" fx:id="gameAnchor" onKeyPressed="#keyPressed" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentation.FXMLGameSceneController">
+   <children>
+      <ImageView fx:id="player" fitHeight="92.0" fitWidth="85.0" layoutX="456.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AssetsLibrary/knight_1.png" />
+         </image>
+      </ImageView>
+      <AnchorPane id="AnchorPane" fx:id="hudAnchor" layoutX="1.0" layoutY="513.0" prefHeight="197.0" prefWidth="1009.0">
+         <children>
+            <ListView fx:id="inventoryList" focusTraversable="false" layoutY="34.0" onMouseClicked="#setFocusForGameScene" prefHeight="163.0" prefWidth="184.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="825.0" AnchorPane.topAnchor="34.0" />
+            <Label fx:id="inventoryLabel" alignment="CENTER" layoutX="-1.0" layoutY="6.0" prefHeight="17.0" prefWidth="184.0" text="Inventory" />
+            <ImageView fitHeight="159.0" fitWidth="187.0" layoutX="857.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@AssetsLibrary/knight_1.png" />
+               </image></ImageView>
+            <Label fx:id="playerName" alignment="CENTER" layoutX="824.0" layoutY="23.0" prefHeight="17.0" prefWidth="184.0" text="Player Name" />
+            <Label fx:id="currentRoom" alignment="CENTER" layoutX="232.0" layoutY="6.0" prefHeight="17.0" prefWidth="545.0" text="Label" />
+            <TextFlow fx:id="DialogueTextFlow" layoutX="541.0" layoutY="34.0" prefHeight="166.0" prefWidth="303.0" />
+            <Label fx:id="DialogueLabel" layoutX="663.0" layoutY="4.0" text="Dialogue" />
+            <Button fx:id="dropItemBtn" layoutX="203.0" layoutY="40.0" mnemonicParsing="false" onAction="#dropItemAction" text="Drop Item" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="westDoor" fitHeight="100.0" fitWidth="40.0" layoutX="25.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AssetsLibrary/door_PNG17625.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="southDoor" fitHeight="100.0" fitWidth="40.0" layoutX="481.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AssetsLibrary/door_PNG17625.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="northDoor" fitHeight="100.0" fitWidth="40.0" layoutX="487.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AssetsLibrary/door_PNG17625.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="eastDoor" fitHeight="100.0" fitWidth="40.0" layoutX="955.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@AssetsLibrary/door_PNG17625.png" />
+         </image>
+      </ImageView>
+      <MenuButton fx:id="OptionsButtonMenu" focusTraversable="false" layoutX="902.0" layoutY="14.0" mnemonicParsing="false" text="Options">
+        <items>
+          <MenuItem fx:id="SaveAndExit" mnemonicParsing="false" onAction="#saveAndExit" text="Save and exit" />
+          <MenuItem fx:id="ExitWithoutSaving" mnemonicParsing="false" onAction="#exitNoSave" text="Exit without saving" />
+        </items>
+      </MenuButton>
+      <AnchorPane fx:id="dialogueScene" layoutX="388.0" layoutY="153.0" prefHeight="390.0" prefWidth="376.0">
+         <children>
+            <ImageView fx:id="NPCCloseUpImg" fitHeight="192.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@AssetsLibrary/knight_1.png" />
+               </image></ImageView>
+            <TextArea fx:id="dialogueTextArea" editable="false" layoutX="132.0" layoutY="-2.0" prefHeight="226.0" prefWidth="247.0" wrapText="true" />
+            <Label fx:id="NPCName" alignment="CENTER" layoutX="10.0" layoutY="195.0" prefHeight="17.0" prefWidth="114.0" text="NPC - Name" />
+            <Button fx:id="answerBtn" layoutX="172.0" layoutY="349.0" mnemonicParsing="false" onAction="#answerAction" prefHeight="27.0" prefWidth="167.0" text="Answer" />
+            <ListView fx:id="answersListView" layoutX="132.0" layoutY="224.0" onMouseClicked="#selectAnswer" prefHeight="107.0" prefWidth="247.0" />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
