@@ -529,7 +529,9 @@ public class FXMLGameSceneController implements Initializable {
     }
     
     @FXML
-    private void exitNoSave(ActionEvent event) throws IOException {
+    private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+        business.saveHighscore();
+        System.out.println("Should save");
         Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
         business.saveHighscore();
         Scene newScene = new Scene(adminScene);

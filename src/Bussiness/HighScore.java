@@ -7,6 +7,7 @@ package Bussiness;
 
 import Acquintance.IHighScore;
 import Acquintance.IScore;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -14,7 +15,7 @@ import java.util.Collections;
  *
  * @author Markb
  */
-public class HighScore implements IHighScore {
+public class HighScore implements IHighScore, Serializable {
     
     ArrayList<IScore> scores;
         

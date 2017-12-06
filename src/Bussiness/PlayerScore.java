@@ -6,6 +6,7 @@
 package Bussiness;
 
 import Acquintance.IScore;
+import java.io.Serializable;
 
 
 
@@ -13,7 +14,7 @@ import Acquintance.IScore;
  *
  * @author Markb
  */
-public class PlayerScore implements IScore{
+public class PlayerScore implements IScore, Serializable{
     
     private String name;
     private double score;
