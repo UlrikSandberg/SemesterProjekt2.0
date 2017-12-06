@@ -57,15 +57,16 @@ public class FXMLHighScoreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
-        FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
-        SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
-        SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
-        ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
-        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
-        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
-        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
+        //For-loop
+//        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
+//        FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
+//        SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
+//        SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
+//        ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
+//        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
+//        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
+//        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
+          System.out.println(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");  
 
     }
 
