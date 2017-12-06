@@ -190,7 +190,7 @@ public class FXMLGameSceneController implements Initializable {
     private void goRight() {
         
         double newY = this.player.getBoundsInParent().getMinY();
-        double newX = this.player.getBoundsInParent().getMinX() + 10;
+        double newX = this.player.getBoundsInParent().getMinX() + 20;
         if(newX > gameAnchor.getWidth() - 20 - this.player.getBoundsInParent().getWidth()) {
             newX = gameAnchor.getWidth() - 20 - this.player.getBoundsInParent().getWidth();
         }
@@ -202,7 +202,7 @@ public class FXMLGameSceneController implements Initializable {
     private void goLeft() {
         
         double newY = this.player.getBoundsInParent().getMinY();
-        double newX = this.player.getBoundsInParent().getMinX() - 10;
+        double newX = this.player.getBoundsInParent().getMinX() - 20;
         if(newX < gameAnchor.getBoundsInParent().getMinX() + 20) {
             newX = gameAnchor.getBoundsInParent().getMinX() + 20;
         }
@@ -210,11 +210,10 @@ public class FXMLGameSceneController implements Initializable {
         this.detectCollision();
         
     }
-    
-    
+      
     private void goUp() {
         
-        double newY = this.player.getBoundsInParent().getMinY() - 10;
+        double newY = this.player.getBoundsInParent().getMinY() - 20;
         double newX = this.player.getBoundsInParent().getMinX();
         if(newY < 20) {
             newY = 20;
@@ -225,7 +224,7 @@ public class FXMLGameSceneController implements Initializable {
     
     private void goDown() {
         
-        double newY = this.player.getBoundsInParent().getMinY() + 10;
+        double newY = this.player.getBoundsInParent().getMinY() + 20;
         double newX = this.player.getBoundsInParent().getMinX();
         if(newY > this.gameAnchor.getBoundsInParent().getHeight() - 20 - this.hudAnchor.getBoundsInParent().getHeight() - this.player.getBoundsInParent().getHeight()) {
             newY = this.gameAnchor.getBoundsInParent().getHeight() - 20 - this.hudAnchor.getBoundsInParent().getHeight() - this.player.getBoundsInParent().getHeight();

@@ -73,7 +73,7 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     }
     
     public void setItemCriteria(Item item) {
-        this.itemCriteria = this.item;
+        this.itemCriteria = item;
     }
     
     public Item getItemCriteria() {

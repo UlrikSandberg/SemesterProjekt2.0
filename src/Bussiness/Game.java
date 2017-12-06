@@ -202,9 +202,10 @@ public class Game {
         taxMan.setItem(paper);
         wornLock.setItem(key);
         
-        maculator.setCriteria(officeGuyQuest);
-        maculator.setItemCriteria(bossPapers);
         
+        maculator.setCriteria(officeGuyQuest);
+        maculator.setItem(bossPapers);
+        maculator.setItemCriteria(bossPapers);
         janitor.setItemCriteria(paper);
         janitor.setItem(dress);
         

@@ -105,7 +105,7 @@ public class OfficeGuy extends NPC {
             System.out.println("Complete the quest before returning to officeGuy");
             }
         */
-        
+        System.out.println("We get officeguyDialogueBlock2?");
         return new OfficeGuyDialogueBlock2(this);
     }
 

@@ -34,7 +34,7 @@ public class Guard extends NPC implements IGuard {
         System.out.println("I see you've lost your way, if you want out, it's by the lobby");
         System.out.println("If I see you again there'll be consequences ... ");
         
-        super.changeState();
+        //super.changeState();
         return new BulterDialogueBlock1(this);
     }
 

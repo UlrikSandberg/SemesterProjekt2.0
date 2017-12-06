@@ -34,11 +34,13 @@ public class OfficeGuyDialogueBlock1 implements IDialogueBlock {
 
     }
 
-    public String getIntro(){
+    public String getIntro() {
         String theString = "Hello mr. \n" 
                 + "You look like a man who wants to help a fella out\n"
                 + "I got these papers from by boss. I need them destroyed\n"
                 + "Could you help me out?";
+        
+        System.out.println(owner.getItem());
         
         this.options.clear();
         this.options.add("Sure thing, office guy! (Accept quest)");
@@ -48,12 +50,13 @@ public class OfficeGuyDialogueBlock1 implements IDialogueBlock {
         return theString;
     }
     
-    public String case1(Player player){
+    public String case1(Player player) {
         String theString = "You accepted the quest!";
-        
-        
-        System.out.println("Chaning state and setting quest to player");
+         
+        System.out.println("Changing state and setting quest to player");
         owner.changeState();
+        System.out.println(owner.getItem().getName());
+        player.getInventory().addToInventory(owner.getItem());
         player.setQuest(owner.getQuest());
         
         this.options.clear();
@@ -61,7 +64,7 @@ public class OfficeGuyDialogueBlock1 implements IDialogueBlock {
         return theString;
     }
     
-    public String case2(){
+    public String case2() {
         String theString = "You rejected office guys quest";
         
         this.options.clear();

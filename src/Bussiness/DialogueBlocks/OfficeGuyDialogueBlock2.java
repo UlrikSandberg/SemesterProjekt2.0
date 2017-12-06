@@ -27,11 +27,12 @@ public class OfficeGuyDialogueBlock2 implements IDialogueBlock {
     public OfficeGuyDialogueBlock2(INPC owner) {
 
         this.owner = (NPC) owner;
+        //caseMapping.put("", DialogueBlockState);
 
     }
     
     public String getIntro(Player player){
-        
+        System.out.println("We are allso here?");
         String theString;
         if(player.isQuestComplete(owner.getQuest()) == true){
             theString = "Thanks for helping me out with those papers.\n"
@@ -48,15 +49,13 @@ public class OfficeGuyDialogueBlock2 implements IDialogueBlock {
             
             
             
-        } else if(player.isQuestComplete(owner.getQuest()) == false){
+        } else {
             theString = "How did it go with those papers?"
                     + "Complete the quest before returning to officeGuy";
             
             this.options.clear();
             return theString;
         }
-        
-        return null;
     }
     
     
@@ -82,7 +81,9 @@ public class OfficeGuyDialogueBlock2 implements IDialogueBlock {
 
     @Override
     public void changeState(String answer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(answer != null){
+            this.DialogueBlockState = caseMapping.get(answer);
+        }
     }
     
 }

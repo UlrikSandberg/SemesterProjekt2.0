@@ -81,6 +81,7 @@ public class BulterDialogueBlock2 implements IDialogueBlock {
         if (player.getQuest().contains(owner.getCriteria()) == true) {
 
             if(owner.getCriteria().questCriteriaIsMet(player) == true) {
+                System.out.println(owner.getItemCriteria());
                 player.getInventory().removeFromInventory(owner.getItemCriteria());
                 owner.changeState();
                 theString = "I just love tuna sandwitches!\nAs for the archive. "

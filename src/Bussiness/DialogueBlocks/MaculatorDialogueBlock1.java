@@ -34,6 +34,9 @@ public class MaculatorDialogueBlock1 implements IDialogueBlock {
     
     public String getIntro(Player player){
         
+        
+        System.out.println(owner.getItem());
+        
         if(player.getQuest().contains(owner.getCriteria())){
         String theString = "Beep Boop Beep!";
         
@@ -48,20 +51,22 @@ public class MaculatorDialogueBlock1 implements IDialogueBlock {
         return theString;
     }
     
-    public String case1(Player player){
+    public String case1(Player player) {
         
-        if(player.getInventory().inventoryDoesContain(owner.getItemCriteria())){
+        
+        if(player.getInventory().inventoryDoesContain(owner.getItem())) {
             owner.getCriteria().setCompleted();
+            player.getInventory().removeFromInventory(owner.getItem());
             String theString = "The papers are gone \n Magic...";
             owner.changeState();
             this.options.clear();
             return theString;
-        } else{
+        } else {
+            
             String theString = "You dont have the right papers";
             this.options.clear();
             return theString;
-        }
-        
+        }  
     }
     
     public String case2(){

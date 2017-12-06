@@ -61,6 +61,24 @@ public class Inventory implements Serializable{
 
     
     public boolean inventoryDoesContain(Item newItem){  //Checks if the inventory contains a specific item
+        System.out.println("does contained was called");
+        System.out.println(newItem.getName());
+        /*
+        for(IItem item: this.inventory) {
+            System.out.println(newItem.getName());
+            if(item == newItem) {
+                System.out.println("Den er her altså!");
+            }
+        }
+        */
+        
+        
+        if(inventory.contains(newItem)) {
+            System.out.println("Den er her");
+        } else {
+            System.out.println("Den er her ikke?");
+        }
+        
         return inventory.contains(newItem);
     }
     
