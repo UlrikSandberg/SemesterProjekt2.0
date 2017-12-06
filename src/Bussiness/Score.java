@@ -82,14 +82,14 @@ public class Score implements Serializable{
     }
     
     //Whenever we wish to increment our the users score. Upon completing quest and so forth. 
-    void incrementScore(int i) {
+    public void incrementScore(int i) {
         
         this.score += i;
      
     }
     
     //Whenever we wish to decrement the users score. Maybe when failing to answer a simple question...
-    void decrementScore(int i) {
+    public void decrementScore(int i) {
         
         this.score -= i;
     }
