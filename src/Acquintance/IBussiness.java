@@ -20,7 +20,7 @@ public interface IBussiness {
     void injectData(IData dataLayer);
     Boolean goNextRoom(DirectionType direction);
     void startNewGame(String playerName);
-    void loadSavedGame();
+    void loadSavedGame()throws IOException, FileNotFoundException, ClassNotFoundException;
     void saveGame() throws IOException, FileNotFoundException, ClassNotFoundException;
     IPlayer getPlayer();
     IItem[] getInventory();
@@ -30,6 +30,9 @@ public interface IBussiness {
     Boolean takeItem(IItem item);
     void removePlayerItem(IItem item);
     ArrayList<INPC> getRoomNPCS();
+    IHighScore getHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
+    void saveHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
+    void loadHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
     
     
 }

@@ -6,7 +6,6 @@
 package Data;
 
 import Acquintance.IDataTransfer;
-import Acquintance.IHighScore;
 import Acquintance.IPlayer;
 import Acquintance.IRoom;
 import java.io.Serializable;
@@ -21,7 +20,7 @@ public class DataTransfer implements IDataTransfer, Serializable{
     private HashMap<String, IRoom> rooms;
     private IRoom currentRoom;
     private IPlayer player;
-    private IHighScore highscore;
+    
     
     DataTransfer(IPlayer player, IRoom room, HashMap<String, IRoom> rooms) {
         this.currentRoom = room;
@@ -29,20 +28,19 @@ public class DataTransfer implements IDataTransfer, Serializable{
         this.rooms = rooms;
     }
 
+    @Override
     public IPlayer getPlayer() {
         return this.player;
     }
 
+    @Override
     public HashMap<String, IRoom> getRooms() {
         return this.rooms;
     }
 
+    @Override
     public IRoom getCurrentRoom() {
         return this.currentRoom;
     }
 
-    @Override
-    public IHighScore getHighscore() {
-        return this.highscore;
-    }
 }

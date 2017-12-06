@@ -1,6 +1,7 @@
 package Bussiness;
 import Acquintance.DirectionType;
 import Acquintance.IDataTransfer;
+import Acquintance.IHighScore;
 import Acquintance.IItem;
 import Acquintance.INPC;
 import Acquintance.IPlayer;
@@ -30,6 +31,7 @@ public class Game {
     private Room guardRoom;
     private Player player;
     private ArrayList<Room> guardRooms;
+    private IHighScore highscore;
     //Rooms
         Room lobby, cafeteria, WestHall, MaleRestroom, FemaleRestroom, EastHall, office, copyRoom, archives, money, utillity;
     
@@ -597,7 +599,13 @@ public class Game {
         }    
     }
     
+    public IHighScore getHighscore(){
+        return highscore;
+    }
     
+    void loadHighscore(IHighScore loadHighScore) {
+        this.highscore = loadHighScore;
+    }
     
     private void interact(Command command) 
     {

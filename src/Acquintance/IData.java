@@ -18,6 +18,8 @@ public interface IData {
     
     IDataTransfer loadGame() throws FileNotFoundException, IOException, ClassNotFoundException;
     void saveGame(IDataTransfer transfer) throws FileNotFoundException, IOException, ClassNotFoundException;
+    IHighScore loadHighScore() throws FileNotFoundException, IOException, ClassNotFoundException;
+    void saveHighScore(IHighScore highscore) throws FileNotFoundException, IOException, ClassNotFoundException;
     
           
 }

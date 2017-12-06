@@ -7,6 +7,7 @@ package Data;
 
 import Acquintance.IData;
 import Acquintance.IDataTransfer;
+import Acquintance.IHighScore;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,6 +35,18 @@ public class DataFacade implements IData {
         this.transfer = transfer;
         ObjectOutputStream transferOut = new ObjectOutputStream(new FileOutputStream("save.txt"));
         transferOut.writeObject(transfer);
+    }
+
+    @Override
+    public IHighScore loadHighScore() throws FileNotFoundException, IOException, ClassNotFoundException {
+        ObjectInputStream scoresIn = new ObjectInputStream(new FileInputStream("scores.txt"));
+        return (IHighScore) scoresIn;
+    }
+
+    @Override
+    public void saveHighScore(IHighScore highscore) throws FileNotFoundException, IOException, ClassNotFoundException{
+        ObjectOutputStream scoresOut = new ObjectOutputStream(new FileOutputStream("scores.txt"));
+        scoresOut.writeObject(highscore);
     }
 
     

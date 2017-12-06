@@ -8,16 +8,14 @@ package Bussiness;
 import Acquintance.DirectionType;
 import Acquintance.IBussiness;
 import Acquintance.IData;
+import Acquintance.IHighScore;
 import Acquintance.IItem;
 import Acquintance.INPC;
 import Acquintance.IPlayer;
 import Acquintance.IRoom;
-import Bussiness.Game;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -58,7 +56,7 @@ public class BussinessFacade implements IBussiness {
     }
     
     @Override
-    public void loadSavedGame() {
+    public void loadSavedGame() throws IOException, FileNotFoundException, ClassNotFoundException{
         try {
             game = new Game();
             game.loadObjects(dataFacade.loadGame());
@@ -133,6 +131,24 @@ public class BussinessFacade implements IBussiness {
         return game.getCurrentRoom().getRoomNPCS()                                  ;
         
         
+    }
+
+    @Override
+    public IHighScore getHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
+        if(game.getHighscore() == null){
+            loadHighscore();            
+        }
+        return game.getHighscore();
+    }
+
+    @Override
+    public void saveHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
+        dataFacade.saveHighScore(game.getHighscore());
+    }
+
+    @Override
+    public void loadHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
+        game.loadHighscore(dataFacade.loadHighScore());
     }
 
     

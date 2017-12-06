@@ -5,7 +5,6 @@
  */
 package Acquintance;
 
-import Data.DataTransfer;
 import java.util.HashMap;
 
 /**
@@ -18,6 +17,6 @@ public interface IDataTransfer {
     IPlayer getPlayer();
     HashMap<String, IRoom> getRooms();
     IRoom getCurrentRoom();
-    IHighScore getHighscore();
+    
 }
 

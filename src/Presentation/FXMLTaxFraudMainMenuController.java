@@ -6,6 +6,7 @@
 package Presentation;
 
 import Acquintance.IBussiness;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -73,7 +74,7 @@ public class FXMLTaxFraudMainMenuController implements Initializable {
     }
     
     @FXML
-    private void LoadGame(ActionEvent event) throws IOException {
+    private void LoadGame(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
         
         business.loadSavedGame();
         
