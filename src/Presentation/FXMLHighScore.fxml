@@ -64,13 +64,13 @@
                   <Font name="System Bold" size="15.0" />
                </font></TextField>
             <TextField fx:id="FirstPlaceName" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="FirstPlaceScore" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <TextField fx:id="SecondPlaceName" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="SecondPlaceScore" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="ThirdPlaceName" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="ThirdPlaceScore" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField fx:id="FourthPlaceName" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="FourthPlaceScore" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="FirstPlaceScore" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="SecondPlaceName" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="SecondPlaceScore" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="ThirdPlaceName" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="ThirdPlaceScore" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="FourthPlaceName" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Player" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="FourthPlaceScore" alignment="CENTER" editable="false" focusTraversable="false" promptText="No Score" GridPane.columnIndex="2" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <Label alignment="CENTER" layoutX="378.0" layoutY="59.0" text="High Score" textFill="#ff0101">

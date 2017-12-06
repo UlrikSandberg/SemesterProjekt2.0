@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Acquintance.IBussiness;
 import Acquintance.IHighScore;
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +18,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.stage.Stage;
@@ -30,6 +30,7 @@ import javafx.stage.Stage;
 public class FXMLHighScoreController implements Initializable {
 
     IHighScore highScore;
+    IBussiness bussinesFacade;
 
     @FXML
     private Button backButton;
@@ -56,17 +57,15 @@ public class FXMLHighScoreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.something();
         
-
-//        
-//        FirstPlaceScore.setText(highScore.getScores().get(0).getScore() + "");
-//        SecondPlaceName.setText(highScore.getScores().get(1).getName());
-//        SecondPlaceScore.setText(highScore.getScores().get(1).getScore() + "");
-//        ThirdPlaceName.setText(highScore.getScores().get(2).getName());
-//        ThirdPlaceScore.setText(highScore.getScores().get(2).getScore() + "");
-//        FourthPlaceName.setText(highScore.getScores().get(3).getName());
-//        FourthPlaceScore.setText(highScore.getScores().get(3).getScore() + "");
+        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
+        FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
+        SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
+        SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
+        ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
+        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
+        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
+        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
 
     }
 

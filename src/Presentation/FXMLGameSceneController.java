@@ -531,12 +531,12 @@ public class FXMLGameSceneController implements Initializable {
     @FXML
     private void exitNoSave(ActionEvent event) throws IOException {
         Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
-        
+        business.saveHighscore();
         Scene newScene = new Scene(adminScene);
         Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
         appStage.setScene(newScene);
         appStage.show();
-        
+        business.saveHighscore();
     }
 
     @FXML
