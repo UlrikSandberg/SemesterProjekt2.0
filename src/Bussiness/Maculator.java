@@ -11,6 +11,8 @@ package Bussiness;
  */
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.MaculatorDialogueBlock1;
+import Bussiness.DialogueBlocks.MaculatorDialogueBlock2;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Maculator extends NPC {
@@ -23,6 +25,7 @@ public class Maculator extends NPC {
     //Initialize first contact with NPC
     @Override
     public IDialogueBlock firstContact(Player player) {
+        /*
         Scanner input = new Scanner(System.in);
           //Checks if you have the respective quest criteria
         if(player.getQuest().contains(super.getCriteria()) == true){
@@ -45,20 +48,23 @@ public class Maculator extends NPC {
         }else { 
             System.out.println("Beep boop beep!");
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new MaculatorDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
+        /*
         System.out.println("Beep boop beep!");
         System.out.println("This machine has had enough paper for today...");
-        return new BulterDialogueBlock1(this);
+*/
+        return new MaculatorDialogueBlock2(this);
     }
 
     @Override
     public IDialogueBlock thirdContact(Player player) {
-        System.out.println("Beep boop beep!");
-        System.out.println("This machine has had enough paper for today...");
+        //System.out.println("Beep boop beep!");
+        //System.out.println("This machine has had enough paper for today...");
         return new BulterDialogueBlock1(this);
     }
     

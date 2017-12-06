@@ -6,6 +6,9 @@
 package Bussiness;
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.JanitorDialogueBlock1;
+import Bussiness.DialogueBlocks.JanitorDialogueBlock2;
+import Bussiness.DialogueBlocks.JanitorDialogueBlock3;
 import java.util.ArrayList;
 import java.util.Scanner;
 import Bussiness.NPC;
@@ -29,7 +32,7 @@ public class Janitor extends NPC {
     @Override
     public IDialogueBlock firstContact(Player player) {
         
-        
+        /*
         Scanner input = new Scanner(System.in);
         System.out.println("Hello i am the Janitor of this place");
         // CHECK FOR PAPER INSTEAD
@@ -73,12 +76,13 @@ public class Janitor extends NPC {
                 
         }
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new JanitorDialogueBlock1(this);
     }    
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         if(player.getQuest().contains(super.getQuest()) == true) {
@@ -107,11 +111,12 @@ public class Janitor extends NPC {
                 System.out.println("My mouth is still dry, fuck off!"); 
             }  
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new JanitorDialogueBlock2(this);
     }
     @Override
     public IDialogueBlock thirdContact(Player player) {
-                    
+             /*       
         if(player.isQuestComplete(super.getCriteria()) == true) {
             
             
@@ -133,7 +138,8 @@ public class Janitor extends NPC {
                     } 
                 
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new JanitorDialogueBlock3(this);
         }
 
     @Override

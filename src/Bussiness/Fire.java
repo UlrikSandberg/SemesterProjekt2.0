@@ -7,6 +7,8 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.FireDialogueBlock1;
+import Bussiness.DialogueBlocks.FireDialogueBlock2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +26,7 @@ public class Fire extends NPC{
     
     @Override
     public IDialogueBlock firstContact(Player player) {
+        /*
         Scanner input = new Scanner(System.in);
         if(player.getInventory().inventoryDoesContain(super.getItem())){
             System.out.println("The pile of money is ablaze");
@@ -40,13 +43,14 @@ public class Fire extends NPC{
                     System.out.println("The fire keeps burning");
             }
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new FireDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        System.out.println("The fire is only ashes, and you leave it be");
-        return new BulterDialogueBlock1(this);
+        //System.out.println("The fire is only ashes, and you leave it be");
+        return new FireDialogueBlock2(this);
     }
 
     @Override

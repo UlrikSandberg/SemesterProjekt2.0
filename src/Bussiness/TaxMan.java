@@ -7,6 +7,8 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.TaxManDialogueBlock1;
+import Bussiness.DialogueBlocks.TaxManDialogueBlock2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +26,7 @@ public class TaxMan extends NPC {
     //Initializing firstContact based on IDialogue interface
     @Override
     public IDialogueBlock firstContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("Why hello there, young traveller. I am the master of taxes and this is my humble abode.");
@@ -169,18 +171,19 @@ public class TaxMan extends NPC {
                         break;
                 }
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new TaxManDialogueBlock1(this);
     }
     
     @Override
     public IDialogueBlock secondContact(Player player) {
         System.out.println("You have gotten your papers. Now leave me");
-        return new BulterDialogueBlock1(this);
+        return new TaxManDialogueBlock2(this);
     }
 
     @Override
     public IDialogueBlock thirdContact(Player player) {
-        return new BulterDialogueBlock1(this);
+        return null;
         
     }
 

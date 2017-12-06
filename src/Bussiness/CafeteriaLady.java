@@ -60,7 +60,7 @@ public class CafeteriaLady extends NPC {
     @Override
     public IDialogueBlock secondContact(Player player) {
         //System.out.println("You allready received my quest! Leave me alone! LOL");
-        return new BulterDialogueBlock1(this);
+        return new CafeteriaLadyDialogueBlock1(this);
     }
 
     @Override
