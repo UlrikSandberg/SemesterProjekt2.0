@@ -136,7 +136,8 @@ public class BussinessFacade implements IBussiness {
     @Override
     public IHighScore getHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
         if(game.getHighscore() == null){
-            loadHighscore();            
+            loadHighscore();
+            System.out.println("HighScore loaded!");
         }
         return game.getHighscore();
     }
