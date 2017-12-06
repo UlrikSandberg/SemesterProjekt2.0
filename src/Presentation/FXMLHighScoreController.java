@@ -66,7 +66,7 @@ public class FXMLHighScoreController implements Initializable {
 //        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
 //        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
 //        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
-          System.out.println(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");  
+          //System.out.println(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");  
 
     }
 
