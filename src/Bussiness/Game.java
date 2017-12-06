@@ -9,9 +9,6 @@ import Acquintance.IRoom;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
@@ -61,7 +58,9 @@ public class Game {
         this.player = new Player(playerName);
         this.guardRooms = new ArrayList();
         this.commandwords = new CommandWords();
+        this.highscore = new HighScore();
         createObjects();
+        
     }
 
     Game() {
@@ -69,6 +68,7 @@ public class Game {
         this.player = new Player();
         this.guardRooms = new ArrayList();
         this.commandwords = new CommandWords();
+        this.highscore = new HighScore();
         createObjects();
     }
 
