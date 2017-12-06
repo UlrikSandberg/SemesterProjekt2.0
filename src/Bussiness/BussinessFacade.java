@@ -145,6 +145,7 @@ public class BussinessFacade implements IBussiness {
     @Override
     public void saveHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
         dataFacade.saveHighScore(game.getHighscore());
+        System.out.println("BF save HS");
     }
 
     @Override

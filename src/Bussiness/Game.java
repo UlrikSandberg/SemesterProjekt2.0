@@ -600,7 +600,7 @@ public class Game {
     }
     
     public IHighScore getHighscore(){
-        return highscore;
+        return this.highscore;
     }
     
     void loadHighscore(IHighScore loadHighScore) {
