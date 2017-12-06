@@ -124,7 +124,7 @@ public class Bulter extends NPC {
     @Override
     public IDialogueBlock thirdContact(Player player) {
         
-        System.out.println("I dont wanna talk to you, tax-fraud!"); 
+        //System.out.println("I dont wanna talk to you, tax-fraud!"); 
         //super.changeState();
         
         return new BulterDialogueBlock3(this);
