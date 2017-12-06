@@ -7,6 +7,7 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.WornLockDialogueBlock1;
 import java.util.ArrayList;
 import java.util.Scanner;
 /**
@@ -23,7 +24,7 @@ public class WornLock extends NPC{
     
     @Override
     public IDialogueBlock firstContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("I'm a lock");
@@ -47,18 +48,19 @@ public class WornLock extends NPC{
                     break;
             }
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new WornLockDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        return new BulterDialogueBlock1(this);
+        return null;
         
     }
 
     @Override
     public IDialogueBlock thirdContact(Player player) {
-        return new BulterDialogueBlock1(this);
+        return null;
         
     }
 

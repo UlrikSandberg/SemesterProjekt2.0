@@ -7,6 +7,8 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.FinanceGuyDialogueBlock1;
+import Bussiness.DialogueBlocks.FinanceGuyDialogueBlock2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,6 +26,7 @@ public class FinanceGuy extends NPC {
     
     @Override
     public IDialogueBlock firstContact(Player player) {
+        /*
         Scanner input = new Scanner(System.in);
         System.out.println("He just keeps starring at the fire.");
         System.out.println("He doesn't seem to be affected by your presence.");
@@ -44,14 +47,15 @@ public class FinanceGuy extends NPC {
                 System.out.println("He keeps standing there without a care in the world");
                 break;
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new FinanceGuyDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
         System.out.println("He is still just standing there. "
                 + "He might be retarded. That would explain a lot");
-        return new BulterDialogueBlock1(this);
+        return new FinanceGuyDialogueBlock2(this);
     }
 
     @Override

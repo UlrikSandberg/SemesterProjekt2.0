@@ -11,6 +11,9 @@ package Bussiness;
  */
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock1;
+import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock2;
+import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock3;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class OfficeGuy extends NPC {
@@ -24,7 +27,7 @@ public class OfficeGuy extends NPC {
 
     @Override
     public IDialogueBlock firstContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("Hello mr.");
@@ -79,12 +82,13 @@ public class OfficeGuy extends NPC {
                 
                 
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new OfficeGuyDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        
+        /*
         if(player.isQuestComplete(super.getQuest()) == true){
             
             System.out.println("Thanks for helping me out with those papers.");
@@ -100,14 +104,14 @@ public class OfficeGuy extends NPC {
             System.out.println("How did it go with those paper? ");
             System.out.println("Complete the quest before returning to officeGuy");
             }
+        */
         
-        
-        return new BulterDialogueBlock1(this);
+        return new OfficeGuyDialogueBlock2(this);
     }
 
     @Override
     public IDialogueBlock thirdContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("Did you check those archives for your papers? ");
@@ -124,8 +128,8 @@ public class OfficeGuy extends NPC {
                 System.out.println("You should definitely go check that out..");
                 break;
         }
-        
-        return new BulterDialogueBlock1(this);
+        */
+        return new OfficeGuyDialogueBlock3(this);
         
     }
     

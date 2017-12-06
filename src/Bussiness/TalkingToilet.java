@@ -7,6 +7,8 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.TalkingToiletDialogueBlock1;
+import Bussiness.DialogueBlocks.TalkingToiletDialogueBlock2;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,7 +25,7 @@ public class TalkingToilet extends NPC {
     //Initialize first contact with talking toilet
     @Override
     public IDialogueBlock firstContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         //Check if your inventory contains respective item
@@ -64,14 +66,15 @@ public class TalkingToilet extends NPC {
                       break;
               }
                 }
-        return new BulterDialogueBlock1(this);
+*/
+        return new TalkingToiletDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        System.out.println("The toilet is all clogged up with your tax-papers.");
-        System.out.println("It doesn't seem to wanna talk to you anymore");
-        return new BulterDialogueBlock1(this);
+        //System.out.println("The toilet is all clogged up with your tax-papers.");
+        //System.out.println("It doesn't seem to wanna talk to you anymore");
+        return new TalkingToiletDialogueBlock2(this);
     }
 
     @Override

@@ -7,6 +7,9 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Bussiness.DialogueBlocks.ToiletDialogueBlock1;
+import Bussiness.DialogueBlocks.ToiletDialogueBlock2;
+import Bussiness.DialogueBlocks.ToiletDialogueBlock3;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,7 +26,7 @@ public class Toilet extends NPC{
         
     @Override
     public IDialogueBlock firstContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("This toilet seems like it would have great flushing");
@@ -37,12 +40,13 @@ public class Toilet extends NPC{
                 super.getItem().setAmount(super.getItem().getAmount() - 1);
                 super.changeState();
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new ToiletDialogueBlock1(this);
     }
 
     @Override
     public IDialogueBlock secondContact(Player player) {
-        
+        /*
         Scanner input = new Scanner(System.in);
         
         System.out.println("The toilet is clogged");
@@ -60,13 +64,14 @@ public class Toilet extends NPC{
                 System.out.println("No water taken from the toilet");
                 break;
         }
-        return new BulterDialogueBlock1(this);
+*/
+        return new ToiletDialogueBlock2(this);
     }
 
     @Override
     public IDialogueBlock thirdContact(Player player) {
-        System.out.println("The toilet is clogged");
-        return new BulterDialogueBlock1(this);
+        //System.out.println("The toilet is clogged");
+        return new ToiletDialogueBlock3(this);
     }
     
     @Override
