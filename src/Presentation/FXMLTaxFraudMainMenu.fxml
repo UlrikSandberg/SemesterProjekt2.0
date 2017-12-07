@@ -44,6 +44,6 @@
             <Image url="@AssetsLibrary/SDU%20logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="14.0" layoutY="750.0" prefHeight="17.0" prefWidth="634.0" text="Udviklet af:  Ulrik Sandberg, Mark Bring-Nielsen, Justus Gammelgaard, Philip Geisler, Christian Høgh og Alexander Rol" textFill="#eb0000" />
+      <Label layoutX="14.0" layoutY="750.0" prefHeight="21.0" prefWidth="791.0" text="Udviklet af:  Ulrik Sandberg, Mark Bring-Nielsen, Justus Gammelgaard, Philip Geisler, Christian Høgh og Alexander Rol" textFill="#eb0000" />
    </children>
 </AnchorPane>
