@@ -7,9 +7,12 @@ package Presentation;
 
 import Acquintance.IBussiness;
 import Acquintance.IHighScore;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +32,6 @@ import javafx.stage.Stage;
  */
 public class FXMLHighScoreController implements Initializable {
 
-    IHighScore highScore;
     IBussiness bussinesFacade;
 
     @FXML
@@ -56,28 +58,42 @@ public class FXMLHighScoreController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        bussinesFacade = UI.getInstance().getBusiness();
         // TODO
         //For-loop
-//        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
-//        FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
-//        SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
-//        SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
-//        ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
-//        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
-//        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
-//        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
-          //System.out.println(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");  
-
+        
+       
+        System.out.println("John");
+        try {
+            something();
+        } catch (IOException ex) {
+            ex.getCause();
+            ex.getMessage();
+        } catch (ClassNotFoundException ex) {
+            ex.getCause();
+            ex.getMessage();
+        }
+        System.out.println("Matt");
     }
 
-    public void something() {
+    public void something() throws IOException, FileNotFoundException, ClassNotFoundException {
         System.out.println("hello");
- //       System.out.println(highScore.getScores().size());
-        System.out.println(highScore.getScores().get(0));
-        System.out.println(highScore.getScores().get(0).toString());
-//        FirstPlaceName.setText(highScore.getScores().get(0).getName());
+        //       System.out.println(highScore.getScores().size());
+        System.out.println("b" + bussinesFacade + "\th");
+        System.out.println("c" + bussinesFacade.getHighscore() + "\tj");
+        System.out.println(bussinesFacade.getHighscore().getScores().get(0).getName());
+
+        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
+        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
+        FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
+        SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
+        SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
+        ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
+        ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
+        FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
+        FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
     }
-    
+
     @FXML
     private void back(ActionEvent event) throws IOException {
 
@@ -93,14 +109,6 @@ public class FXMLHighScoreController implements Initializable {
 
     @FXML
     private void ScorboardInitiated(ContextMenuEvent event) {
-        
-        FirstPlaceName.setText(highScore.getScores().get(0).getName());
-        FirstPlaceScore.setText(highScore.getScores().get(0).getScore() + "");
-        SecondPlaceName.setText(highScore.getScores().get(1).getName());
-        SecondPlaceScore.setText(highScore.getScores().get(1).getScore() + "");
-        ThirdPlaceName.setText(highScore.getScores().get(2).getName());
-        ThirdPlaceScore.setText(highScore.getScores().get(2).getScore() + "");
-        FourthPlaceName.setText(highScore.getScores().get(3).getName());
-        FourthPlaceScore.setText(highScore.getScores().get(3).getScore() + "");
+
     }
 }

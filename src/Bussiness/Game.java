@@ -601,11 +601,11 @@ public class Game {
     }
     
     public IHighScore getHighscore(){
-        return this.highscore;
+        return highscore;
     }
     
     void loadHighscore(IHighScore loadHighScore) {
-        this.highscore = loadHighScore;
+        highscore = loadHighScore;
     }
     
     private void interact(Command command) 

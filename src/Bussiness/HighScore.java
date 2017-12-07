@@ -23,15 +23,15 @@ public class HighScore implements IHighScore, Serializable {
         
         scores = new ArrayList<>();
         
-        PlayerScore score1 = new PlayerScore("jon", 87);
-        PlayerScore score2 = new PlayerScore("Mike", 6451);
-        PlayerScore score3 = new PlayerScore("Harrold", 999);
-        PlayerScore score4 = new PlayerScore("James", 5246);
-        
-        scores.add(score1);
-        scores.add(score2);
-        scores.add(score3);
-        scores.add(score4);
+//        PlayerScore score1 = new PlayerScore("jon", 87);
+//        PlayerScore score2 = new PlayerScore("Mike", 6451);
+//        PlayerScore score3 = new PlayerScore("Harrold", 999);
+//        PlayerScore score4 = new PlayerScore("James", 5246);
+//        
+//        scores.add(score1);
+//        scores.add(score2);
+//        scores.add(score3);
+//        scores.add(score4);
     }
     
     public void viableForHighscore(PlayerScore score){
@@ -39,7 +39,7 @@ public class HighScore implements IHighScore, Serializable {
         scores.add(score);
         
         Collections.sort(scores, (a, b) -> a.getScore() > b.getScore() ? -1 : a.getScore() == b.getScore() ? 0 : 1);
-        if(scores.size() == 5){
+        while(scores.size() >= 5){
             scores.remove(4);
         }
         

@@ -25,7 +25,7 @@ public class BussinessFacade implements IBussiness {
 
     private IData dataFacade;
     private Game game;
-    
+
     @Override
     public void injectData(IData dataLayer) {
         this.dataFacade = dataLayer;
@@ -33,30 +33,29 @@ public class BussinessFacade implements IBussiness {
 
     @Override
     public Boolean goNextRoom(DirectionType direction) {
-        
-        if(direction == DirectionType.NORTH) {
+
+        if (direction == DirectionType.NORTH) {
             return game.goRoom(direction);
         }
-        if(direction == DirectionType.SOUTH) {
+        if (direction == DirectionType.SOUTH) {
             return game.goRoom(direction);
         }
-        if(direction == DirectionType.EAST) {
+        if (direction == DirectionType.EAST) {
             return game.goRoom(direction);
         }
-        if(direction == DirectionType.WEST) {
+        if (direction == DirectionType.WEST) {
             return game.goRoom(direction);
         }
         return false;
     }
-    
-    
+
     @Override
-    public void startNewGame(String playerName) {    
+    public void startNewGame(String playerName) {
         game = new Game(playerName);
     }
-    
+
     @Override
-    public void loadSavedGame() throws IOException, FileNotFoundException, ClassNotFoundException{
+    public void loadSavedGame() throws IOException, FileNotFoundException, ClassNotFoundException {
         try {
             game = new Game();
             game.loadObjects(dataFacade.loadGame());
@@ -65,15 +64,15 @@ public class BussinessFacade implements IBussiness {
             System.out.println(ex.getMessage());
         }
     }
-    
+
     @Override
-    public void saveGame() throws IOException, FileNotFoundException, ClassNotFoundException{
-       dataFacade.saveGame(game.saveObjects());
+    public void saveGame() throws IOException, FileNotFoundException, ClassNotFoundException {
+        dataFacade.saveGame(game.saveObjects());
     }
 
     @Override
     public IPlayer getPlayer() {
-        
+
         return game.getPlayer();
     }
 
@@ -84,9 +83,9 @@ public class BussinessFacade implements IBussiness {
 
     @Override
     public ArrayList<DirectionType> getExists() {
-        
+
         return game.getCurrentRoom().getExits();
-        
+
     }
 
     @Override
@@ -96,66 +95,61 @@ public class BussinessFacade implements IBussiness {
 
     @Override
     public ArrayList<IItem> getRoomItems() {
-        
-        
+
         return game.getCurrentRoom().getItems();
-        
-        
+
     }
 
     @Override
     public Boolean takeItem(IItem item) {
-        
-        if(game.getPlayerRoot().getInventory().addToInventory((Item) item)) {
-            
+
+        if (game.getPlayerRoot().getInventory().addToInventory((Item) item)) {
+
             //Since item as added to the inventory remove from the room
             Room currentRoom = (Room) game.getCurrentRoom();
             currentRoom.removeItemFromRoom(item);
-            
+
             return true;
         } else {
             return false;
-        }   
+        }
     }
 
     @Override
     public void removePlayerItem(IItem item) {
-        
+
         this.game.getPlayerRoot().getInventory().removeFromInventory(item);
-        
+
     }
 
     @Override
     public ArrayList<INPC> getRoomNPCS() {
-        
-        return game.getCurrentRoom().getRoomNPCS()                                  ;
-        
-        
+
+        return game.getCurrentRoom().getRoomNPCS();
+
     }
 
     @Override
-    public IHighScore getHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
-        if(game.getHighscore() == null){
-            loadHighscore();
-            System.out.println("HighScore loaded!");
-        }
-        return game.getHighscore();
+    public IHighScore getHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
+        game = new Game();
+        loadHighscore();
+        System.out.println("HighScore loaded!");
+
+        return this.game.getHighscore();
     }
 
     @Override
-    public void saveHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
+    public void saveHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
         dataFacade.saveHighScore(game.getHighscore());
         System.out.println("BF save HS");
     }
 
     @Override
-    public void loadHighscore() throws IOException, FileNotFoundException, ClassNotFoundException{
-        game.loadHighscore(dataFacade.loadHighScore());
+    public void loadHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
+        IHighScore score = dataFacade.loadHighScore();
+        System.out.println(score.getScores().get(0).getName());
+        
+        game.loadHighscore(score);
     }
 
-    
-
-    
-    
-    
 }

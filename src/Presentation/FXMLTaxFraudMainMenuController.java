@@ -91,9 +91,7 @@ public class FXMLTaxFraudMainMenuController implements Initializable {
     
     @FXML
     private void HighScore(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-        
-        business.loadHighscore();
-        
+                
         Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLHighScore.fxml"));
                 
         Scene newScene = new Scene(adminScene);

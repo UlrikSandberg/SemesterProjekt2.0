@@ -42,7 +42,7 @@ public class DataFacade implements IData {
     @Override
     public IHighScore loadHighScore() throws FileNotFoundException, IOException, ClassNotFoundException {
         ObjectInputStream scoresIn = new ObjectInputStream(new FileInputStream("scores.txt"));
-        return (IHighScore) scoresIn;
+        return (IHighScore) scoresIn.readObject();
     }
 
     @Override
