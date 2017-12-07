@@ -77,17 +77,17 @@ public class Game {
     {
                 
         //Create Rooms:
-        lobby = new Room("In the main lobby");
-        cafeteria = new Room("in the cafeteria");
-        WestHall = new Room("in the west hallway");
-        EastHall = new Room("in the east hallway");
-        MaleRestroom = new Room("in male restroom");
-        FemaleRestroom = new Room ("in the female restroom");
-        office = new Room ("in the office"); 
-        copyRoom = new Room ("in the copyroom");
-        archives = new Room ("in the archives");
-        money = new Room ("in the financial area");
-        utillity = new Room ("in the utillityroom");
+        lobby = new Room("In the main lobby", "/Presentation/AssetsLibrary/Lobby.jpg");
+        cafeteria = new Room("in the cafeteria" , "/Presentation/AssetsLibrary/Cafeteria.jpg");
+        WestHall = new Room("in the west hallway", "/Presentation/AssetsLibrary/Hallway.jpg");
+        EastHall = new Room("in the east hallway", "/Presentation/AssetsLibrary/Hallway.jpg");
+        MaleRestroom = new Room("in male restroom", "/Presentation/AssetsLibrary/ToiletMen.jpg");
+        FemaleRestroom = new Room ("in the female restroom", "/Presentation/AssetsLibrary/ToiletWomen.jpg");
+        office = new Room ("in the office", "/Presentation/AssetsLibrary/officeRoom.jpg"); 
+        copyRoom = new Room ("in the copyroom", "/Presentation/AssetsLibrary/Copyroom.jpg");
+        archives = new Room ("in the archives", "/Presentation/AssetsLibrary/Archive.jpg");
+        money = new Room ("in the financial area", "/Presentation/AssetsLibrary/moneyRoom.jpg");
+        utillity = new Room ("in the utillityroom", "/Presentation/AssetsLibrary/Utillity.jpg");
         
         //Create guardRooms: 
         guardRooms.add(lobby);

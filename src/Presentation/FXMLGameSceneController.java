@@ -114,6 +114,10 @@ public class FXMLGameSceneController implements Initializable {
     private ListView<String> answersListView;
     @FXML
     private ImageView backgroundImage;
+    @FXML
+    private AnchorPane winScene;
+    @FXML
+    private ImageView winSceneImage;
 
 
     /**
@@ -141,6 +145,8 @@ public class FXMLGameSceneController implements Initializable {
         dialogueScene.setStyle("-fx-background-color: gray;");
         dialogueScene.setVisible(false);
         
+        
+        winScene.setVisible(false);
         setInventoryList();
         setExits();   
         
@@ -354,6 +360,16 @@ public class FXMLGameSceneController implements Initializable {
         this.setInventoryList();
         
         
+        if(player.didWin()) {
+            System.out.println("The player won the game how awesome!");
+            winScene.setVisible(true);
+        }
+        if(player.didLose()) {
+            System.out.println("The palyer lost the game how awesome!");
+            winScene.setVisible(true);
+                    
+        }
+        
     }
     
     
@@ -406,6 +422,8 @@ public class FXMLGameSceneController implements Initializable {
         
         currentRoom.setText(business.getCurrentRoom().getShortDescription());
         
+        backgroundImage.setImage(business.getCurrentRoom().getImage());
+        
         //Fetch exits for currentRoom
         ArrayList<DirectionType> list = business.getExists();
         System.out.println(list.size());
@@ -447,6 +465,7 @@ public class FXMLGameSceneController implements Initializable {
         }
         
         this.setInventoryList();
+        
         
         
         //Set player in the middle of the screen!

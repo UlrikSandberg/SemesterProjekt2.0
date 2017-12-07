@@ -36,7 +36,7 @@ public class ToiletDialogueBlock1 implements IDialogueBlock {
         String theString = "This toilet seems like it would have great flusing";
         
         this.options.clear();
-        this.options.add("Flush a paper own the toilet");
+        this.options.add("Flush a paper down the toilet");
         this.options.add("Use the toilet like it was meant to be used");
         this.options.add("Leave the toilet");
         
@@ -44,12 +44,13 @@ public class ToiletDialogueBlock1 implements IDialogueBlock {
         
     }
     
-    public String case1(){
+    public String case1(Player player){
         String theString = "You flush a paper"
                 + "\n The toilet is now clogged";
         
         this.options.clear();
-        owner.getItem().setAmount(owner.getItem().getAmount() - 1);
+        //owner.getItem().setAmount(owner.getItem().getAmount() - 1);
+        owner.getItemCriteria().decrementAmount(player);
         owner.changeState();
         
         return theString;
@@ -61,7 +62,7 @@ public class ToiletDialogueBlock1 implements IDialogueBlock {
             case 0:
                 return this.getIntro();
             case 1: 
-                return this.case1();
+                return this.case1(player);
         }
         return null;
     }

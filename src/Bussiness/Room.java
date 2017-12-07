@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.io.Serializable;
+import javafx.scene.image.Image;
 
 
 /**
@@ -23,8 +24,8 @@ public class Room implements Serializable, IRoom
     private HashMap<String, IItem> roomContent;
     private HashMap<String, INPC> inhabitants;
     private HashMap<DirectionType, INPC> exitBlocks;
-    
-    public Room(String description) 
+    private Image image;
+    public Room(String description, String filePath) 
     {
         this.description = description;
         this.roomContentArray = new ArrayList<>();
@@ -32,6 +33,7 @@ public class Room implements Serializable, IRoom
         this.roomContent = new HashMap<>();
         inhabitants = new HashMap<String, INPC>();
         this.exitBlocks = new HashMap<DirectionType, INPC>();
+        this.image = this.image = new Image(getClass().getResourceAsStream(filePath)); 
     }
 
     public void setExit(DirectionType direction, Room neighbor) 
@@ -54,7 +56,7 @@ public class Room implements Serializable, IRoom
         exitBlocks.put(direction, exitBlock);
     }
     
-    public void removeExitBlock(String direction) 
+    public void removeExitBlock(DirectionType direction) 
     {
         exitBlocks.remove(direction);
     }
@@ -196,5 +198,12 @@ public class Room implements Serializable, IRoom
         
         
     }
+
+    @Override
+    public Image getImage() {
+        return this.image;
+    }
+
+    
 }
 

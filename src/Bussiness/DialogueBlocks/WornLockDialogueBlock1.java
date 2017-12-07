@@ -5,6 +5,7 @@
  */
 package Bussiness.DialogueBlocks;
 
+import Acquintance.DirectionType;
 import Acquintance.IDialogueBlock;
 import Acquintance.INPC;
 import Bussiness.NPC;
@@ -27,7 +28,8 @@ public class WornLockDialogueBlock1 implements IDialogueBlock{
     public WornLockDialogueBlock1(INPC owner) {
 
         this.owner = (NPC) owner;
-        
+        caseMapping.put("Unlock the door", 1);
+        caseMapping.put("Go Another way", 2);
     }
 
     @Override
@@ -38,6 +40,8 @@ public class WornLockDialogueBlock1 implements IDialogueBlock{
                 return case0(player);
             case 1:
                 return case1(player);
+            case 2:
+                return case2(player);
         }
         
         
@@ -47,8 +51,6 @@ public class WornLockDialogueBlock1 implements IDialogueBlock{
     private String case0(Player player) {
         
         String theString = null;
-        
-         
         
         if(player.getInventory().inventoryDoesContain(owner.getItem()) == false) {
             theString = "The door is locked and you dont have the key...";
@@ -76,7 +78,7 @@ public class WornLockDialogueBlock1 implements IDialogueBlock{
         String theString = null;
     
         //player.getInventory().removeFromInventory(owner.getItem());
-        player.getCurrentRoom().removeExitBlock("west");
+        player.getCurrentRoom().removeExitBlock(DirectionType.WEST);
         theString = "The door is unlocked you can now go through";
         
         //Clean up

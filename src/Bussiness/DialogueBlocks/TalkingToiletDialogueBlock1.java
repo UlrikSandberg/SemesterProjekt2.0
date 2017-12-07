@@ -68,7 +68,9 @@ public class TalkingToiletDialogueBlock1 implements IDialogueBlock{
         
         owner.getItem().setAmount(owner.getItem().getAmount() - 1);
         owner.changeState();
-        
+        if(owner.getItem().getAmount() == 0) {
+            player.setWin();
+        }
         this.options.clear();
         
         return theString;

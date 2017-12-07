@@ -7,6 +7,7 @@ package Acquintance;
 
 import Bussiness.NPC;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -17,7 +18,8 @@ public interface IRoom {
     
     ArrayList<DirectionType> getExits();
     String getShortDescription();
-
+    
+    public Image getImage();
     public ArrayList<IItem> getItems();
     public void addItemToRoom(IItem item);
     public ArrayList<INPC> getRoomNPCS();
