@@ -100,6 +100,9 @@ public class GuardDialogueBlock2 implements IDialogueBlock {
         while (randomNum == memNum) {
             randomNum = rand.nextInt() % 3;
         }
+        if (randomNum <= 0) {
+            randomNum = randomNum * -1;
+        }
         switch (randomNum) {
             case 0:
                 this.options.add("what's your 1'st question");
