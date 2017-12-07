@@ -151,5 +151,13 @@ public class BussinessFacade implements IBussiness {
         
         game.loadHighscore(score);
     }
+    
+    @Override
+    public INPC getExitNPC(DirectionType direction) {
+        
+        //Get exitBlock for chosen direction
+        return game.getExitBlock(direction);
+    
+    }
 
 }

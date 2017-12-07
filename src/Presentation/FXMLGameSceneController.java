@@ -112,6 +112,8 @@ public class FXMLGameSceneController implements Initializable {
     private Button answerBtn;
     @FXML
     private ListView<String> answersListView;
+    @FXML
+    private ImageView backgroundImage;
 
 
     /**
@@ -241,25 +243,37 @@ public class FXMLGameSceneController implements Initializable {
             if(this.eastDoor.isVisible() != false) {
                 if(business.goNextRoom(DirectionType.EAST)) {
                     setExits();
+                } else { //There is an exit blocking the way
+                    INPC lock = business.getExitNPC(DirectionType.EAST);
+                    dialogueScene(lock, business.getPlayer());
                 }
             }
         } else if(player.getBoundsInParent().intersects(westDoor.getBoundsInParent())) {
             if(this.westDoor.isVisible() != false) {
                 if(business.goNextRoom(DirectionType.WEST)) {
                     setExits();
+                } else { //There is an exit blocking the way
+                    INPC lock = business.getExitNPC(DirectionType.WEST);
+                    dialogueScene(lock, business.getPlayer());
                 }
             }   
         } else if(player.getBoundsInParent().intersects(northDoor.getBoundsInParent())) {
             if(this.northDoor.isVisible() != false) {
                 if(business.goNextRoom(DirectionType.NORTH)) {
                     setExits();
+                } else { //There is an exit blocking the way
+                    INPC lock = business.getExitNPC(DirectionType.NORTH);
+                    dialogueScene(lock, business.getPlayer());
                 }
             }
         } else if(player.getBoundsInParent().intersects(southDoor.getBoundsInParent())) {
             if(this.southDoor.isVisible() != false) {
                 if(business.goNextRoom(DirectionType.SOUTH)) {
                     setExits();
-                } 
+                } else { //There is an exit blocking the way
+                    INPC lock = business.getExitNPC(DirectionType.SOUTH);
+                    dialogueScene(lock, business.getPlayer());
+                }
             }
         }
         
@@ -307,7 +321,7 @@ public class FXMLGameSceneController implements Initializable {
         answerBtn.setText("Answer");
         //Set image and npc name!
         this.dialogueIsActive = true;
-        //NPCCloseUpImg.setImage(new Image());
+        NPCCloseUpImg.setImage(npc.getImage());
         NPCName.setText(npc.getName());
         dialogueTextArea.setText("Hello");
         //npc.dialogue((Player)player);

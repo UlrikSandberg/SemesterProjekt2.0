@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
  */
 public interface INPC {
     
+    
     public String getName();
     public void setQuest(Quest quest);
     public void setCriteria(Quest quest);

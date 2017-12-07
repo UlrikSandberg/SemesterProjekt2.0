@@ -238,6 +238,7 @@ public class Game {
         return transfer;
     }
     
+    
     public void loadObjects(IDataTransfer transfer) {
         
         //player.getScore().pauseTimer();
@@ -266,6 +267,13 @@ public class Game {
         //System.out.println(currentRoom.getLongDescription());
     }
 
+    public INPC getExitBlock(DirectionType direction) {
+        
+        return currentRoom.getExitBlock(direction);
+        
+    }
+    
+    
     IPlayer getPlayer() {
         return this.player;
     }

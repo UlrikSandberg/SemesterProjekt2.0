@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public interface IBussiness {
     
     
-    
+    INPC getExitNPC(DirectionType direction);
     void injectData(IData dataLayer);
     Boolean goNextRoom(DirectionType direction);
     void startNewGame(String playerName);
