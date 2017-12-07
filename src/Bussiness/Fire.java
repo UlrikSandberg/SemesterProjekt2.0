@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class Fire extends NPC{
 
-    public Fire(String name) {
-        super(name);
+    public Fire(String name, String filePath) {
+        super(name, filePath);
     }
     
     

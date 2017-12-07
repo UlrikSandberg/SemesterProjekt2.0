@@ -10,6 +10,7 @@ import Bussiness.Player;
 import Bussiness.Quest;
 import Bussiness.Room;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -23,7 +24,8 @@ public interface INPC {
     public void setItem(Item item);
     public void setItemCriteria(Item item);
     public IDialogueBlock dialogue(Player player);
-
+    public Image getImage();
+    
     public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom);
     
 }

@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class FinanceGuy extends NPC {
 
-    public FinanceGuy(String name) {
-        super(name);
+    public FinanceGuy(String name, String filePath) {
+        super(name, filePath);
     }
 
     

@@ -23,8 +23,8 @@ import Bussiness.Room;
  **/
 public class Janitor extends NPC {
 
-    Janitor(String name) {
-        super(name);
+    Janitor(String name, String filePath) {
+        super(name, filePath);
     }
     
         

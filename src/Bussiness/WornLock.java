@@ -16,8 +16,8 @@ import java.util.Scanner;
  */
 public class WornLock extends NPC{
 
-    WornLock(String name) {
-        super(name);
+    WornLock(String name, String filePath) {
+        super(name, filePath);
     }
 
         

@@ -9,6 +9,7 @@ import Acquintance.IDialogueBlock;
 import Acquintance.INPC;
 import java.io.Serializable;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -22,9 +23,11 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     private Item item;
     private Item itemCriteria;
     private String name;
+    private Image image;
     
-    protected NPC(String name) {
+    protected NPC(String name, String filePath) {
         this.name = name;
+        this.image = this.image = new Image(getClass().getResourceAsStream(filePath));
     }
     
     
@@ -81,5 +84,9 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     }
     public Item getItem() {
         return this.item;
+    }
+    
+    public Image getImage() {
+        return this.image;
     }
 }

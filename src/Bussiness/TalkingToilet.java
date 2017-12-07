@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class TalkingToilet extends NPC {
 
-    public TalkingToilet(String name) {
-        super(name);
+    public TalkingToilet(String name, String filePath) {
+        super(name, filePath);
     }
     
     //Initialize first contact with talking toilet

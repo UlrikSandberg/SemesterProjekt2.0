@@ -149,18 +149,19 @@ public class Game {
         janitorQuest = new Quest(10, "janitor", "Fetch me piss water");
         
         //Create Inhabitants:
-        steve = new Bulter("Bulter");
-        cafeteriaLady = new CafeteriaLady("Cafeteria Lady");
-        officeGuy = new OfficeGuy("Office Guy");
-        maculator = new Maculator("Maculator");
-        fire = new Fire("Fire");
-        financeGuy = new FinanceGuy("Finance Guy");
-        guard = new Guard("Guard");
-        wornLock = new WornLock("Worn Lock");
-        toilet = new Toilet("Toilet");
-        talkingToilet = new TalkingToilet("Talking Toilet");
-        janitor = new Janitor("Janitor");
-        taxMan = new TaxMan("Tax Man");
+        //Create Inhabitants:
+        steve = new Bulter("Bulter", "/Presentation/AssetsLibrary/ButlerSprite4RealMedAnsigt.png");
+        cafeteriaLady = new CafeteriaLady("Cafeteria Lady", "/Presentation/AssetsLibrary/CafeteriaLadySprite.jpg");
+        officeGuy = new OfficeGuy("Office Guy", "/Presentation/AssetsLibrary/OfficeGuySprite.png");
+        maculator = new Maculator("Maculator","/Presentation/AssetsLibrary/Maculator.png");
+        fire = new Fire("Fire","/Presentation/AssetsLibrary/Fire.jpg");
+        financeGuy = new FinanceGuy("Finance Guy","/Presentation/AssetsLibrary/financeGuy.png");
+        guard = new Guard("Guard","/Presentation/AssetsLibrary/Guard.png");
+        wornLock = new WornLock("Worn Lock","/Presentation/AssetsLibrary/Lock.png");
+        toilet = new Toilet("Toilet","/Presentation/AssetsLibrary/ToiletSprite.gif");
+        talkingToilet = new TalkingToilet("Talking Toilet","/Presentation/AssetsLibrary/TalkingToiletSprite.jpg");
+        janitor = new Janitor("Janitor","/Presentation/AssetsLibrary/Janitor.png");
+        taxMan = new TaxMan("Tax Man","/Presentation/AssetsLibrary/TaxManSprite2.0.jpg");
         
         //Set Inhabitants in respective Room:
         lobby.setInhabitant("steve", steve);

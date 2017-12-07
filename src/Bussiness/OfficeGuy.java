@@ -19,8 +19,8 @@ import java.util.Scanner;
 public class OfficeGuy extends NPC {
     
     
-    public OfficeGuy(String name) {
-        super(name);
+    public OfficeGuy(String name, String filePath) {
+        super(name, filePath);
     }
 
     

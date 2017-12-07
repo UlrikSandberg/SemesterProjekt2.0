@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Maculator extends NPC {
 
-    Maculator(String name) {
-        super(name);
+    Maculator(String name, String filePath) {
+        super(name, filePath);
     }
     
     

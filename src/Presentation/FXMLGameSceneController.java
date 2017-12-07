@@ -442,7 +442,7 @@ public class FXMLGameSceneController implements Initializable {
     
     private void spawnNPCOnScene(INPC npc, int number) {
         
-        ImageView newImage = new ImageView(new Image(getClass().getResourceAsStream("/Presentation/AssetsLibrary/ButlerSprite4RealMedAnsigt.png")));
+        ImageView newImage = new ImageView(npc.getImage());
         
         this.NPCNodes.put(npc, newImage);
         

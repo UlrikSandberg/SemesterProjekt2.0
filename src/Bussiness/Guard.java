@@ -27,8 +27,8 @@ public class Guard extends NPC implements IGuard {
     private ArrayList<Room> guardRoomList;
     Random rand = new Random();
 
-    Guard(String name) {
-        super(name);
+    Guard(String name, String filePath) {
+        super(name, filePath);
     }
 
     @Override

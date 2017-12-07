@@ -17,8 +17,8 @@ import java.util.Scanner;
  */
 public class CafeteriaLady extends NPC {
 
-    CafeteriaLady(String name) {
-        super(name);
+    CafeteriaLady(String name, String filePath) {
+        super(name, filePath);
     }
 
     

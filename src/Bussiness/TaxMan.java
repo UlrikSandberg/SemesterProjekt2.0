@@ -18,8 +18,8 @@ import java.util.Scanner;
  */
 public class TaxMan extends NPC {
 
-    TaxMan(String name) {
-        super(name);
+    TaxMan(String name, String filePath) {
+        super(name, filePath);
     }
     
     

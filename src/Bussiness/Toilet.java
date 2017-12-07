@@ -19,8 +19,8 @@ import java.util.Scanner;
  */
 public class Toilet extends NPC{
 
-    Toilet(String name) {
-        super(name);
+    Toilet(String name, String filePath) {
+        super(name, filePath);
     }
 
         

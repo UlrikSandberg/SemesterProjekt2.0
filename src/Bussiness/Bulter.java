@@ -17,8 +17,8 @@ import java.util.Scanner;
  */
 public class Bulter extends NPC {
 
-    Bulter(String name) {
-        super(name);
+    Bulter(String name, String filePath) {
+        super(name, filePath);
     }
 
     public void changeState() {
