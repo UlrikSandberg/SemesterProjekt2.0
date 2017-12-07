@@ -159,9 +159,9 @@ public class Game {
         guard = new Guard("Guard","/Presentation/AssetsLibrary/Guard.png");
         wornLock = new WornLock("Worn Lock","/Presentation/AssetsLibrary/Lock.png");
         toilet = new Toilet("Toilet","/Presentation/AssetsLibrary/ToiletSprite.gif");
-        talkingToilet = new TalkingToilet("Talking Toilet","/Presentation/AssetsLibrary/TalkingToiletSprite.jpg");
+        talkingToilet = new TalkingToilet("Talking Toilet","/Presentation/AssetsLibrary/TalkingToiletSprite.png");
         janitor = new Janitor("Janitor","/Presentation/AssetsLibrary/Janitor.png");
-        taxMan = new TaxMan("Tax Man","/Presentation/AssetsLibrary/TaxManSprite2.0.jpg");
+        taxMan = new TaxMan("Tax Man","/Presentation/AssetsLibrary/TaxManSprite2.0.png");
         
         //Set Inhabitants in respective Room:
         lobby.setInhabitant("steve", steve);
