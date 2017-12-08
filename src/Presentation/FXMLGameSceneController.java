@@ -154,6 +154,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Player movement controlls
     @FXML
     private void keyPressed(KeyEvent event) {
 
@@ -174,6 +175,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //
     private void setInventoryList() {
 
         //Fetch current buildings
@@ -193,6 +195,7 @@ public class FXMLGameSceneController implements Initializable {
         }
     }
 
+    //Player movement in GUI
     private void goRight() {
 
         double newY = this.player.getBoundsInParent().getMinY();
@@ -205,6 +208,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Player movement in GUI
     private void goLeft() {
 
         double newY = this.player.getBoundsInParent().getMinY();
@@ -217,6 +221,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Player movement in GUI
     private void goUp() {
 
         double newY = this.player.getBoundsInParent().getMinY() - 20;
@@ -228,6 +233,7 @@ public class FXMLGameSceneController implements Initializable {
         this.detectCollision();
     }
 
+    //Player movement in GUI
     private void goDown() {
 
         double newY = this.player.getBoundsInParent().getMinY() + 20;
@@ -240,6 +246,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Collition detection to activate NPC interaction with Player
     private void detectCollision() {
 
         if (player.getBoundsInParent().intersects(eastDoor.getBoundsInParent())) {
@@ -315,6 +322,7 @@ public class FXMLGameSceneController implements Initializable {
         }
     }
 
+    //Dialogue-popup scene
     private void dialogueScene(INPC npc, IPlayer player) {
 
         System.out.println("Should open dialogue box for npc: " + npc.getName());
@@ -331,6 +339,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Dialogue between NPC and Player + Win/Lose-scene
     private void DialogueLoop(IDialogueBlock currentDialogue, String answer, Player player) {
 
         //Change state according to the given answer
@@ -352,10 +361,12 @@ public class FXMLGameSceneController implements Initializable {
         this.answersListView.setItems(data);
         this.setInventoryList();
 
+        //Game Won
         if (player.didWin()) {
             System.out.println("The player won the game how awesome!");
             winScene.setVisible(true);
         }
+        //Game Lost
         if (player.didLose()) {
             System.out.println("The palyer lost the game how awesome!");
             winScene.setVisible(true);
@@ -364,6 +375,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Marks the inventory item clicked on by Player
     @FXML
     private void setFocusForGameScene(MouseEvent event) {
         ObservableList<String> selected;
@@ -375,6 +387,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Options for leaving current room
     private void setExits() {
 
         System.out.println("Setting exits");
@@ -457,6 +470,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Spawns respective NPC('s) when entering a new room
     private void spawnNPCOnScene(INPC npc, int number) {
 
         ImageView newImage = new ImageView(npc.getImage());
@@ -482,12 +496,14 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Despawns the Items from current room when going to a new room
     private void removeItemFromScene(IItem item) {
 
         ImageView itemToRemove = this.itemNodes.get(item);
         gameAnchor.getChildren().remove(itemToRemove);
     }
 
+    //Despawns the NPC when going to new scene
     private void removeNPCFromScene(INPC npc) {
 
         ImageView itemToRemove = this.NPCNodes.get(npc);
@@ -499,6 +515,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Spawn Items in current room
     private void spawnItemOnScene(IItem item) {
 
         ImageView newImage = new ImageView(new Image(getClass().getResourceAsStream("/Presentation/AssetsLibrary/Key-PNG-Image.png")));
@@ -518,6 +535,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //Save the game and exit to main menu
     @FXML
     private void saveAndExit(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
         business.saveGame();
@@ -530,7 +548,21 @@ public class FXMLGameSceneController implements Initializable {
         appStage.show();
 
     }
+    
+    //Exit game to main menu without saving
+    @FXML
+    private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
 
+        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
+
+        Scene newScene = new Scene(adminScene);
+        Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
+        appStage.setScene(newScene);
+        appStage.show();
+
+    }
+
+    //Drop marked Item
     @FXML
     private void dropItemAction(ActionEvent event) {
 
@@ -546,6 +578,7 @@ public class FXMLGameSceneController implements Initializable {
         }
     }
 
+    //Possible answer list
     @FXML
     private void answerAction(ActionEvent event) {
 
@@ -560,6 +593,7 @@ public class FXMLGameSceneController implements Initializable {
         }
     }
 
+    //Dialogue option selection
     @FXML
     private void selectAnswer(MouseEvent event) {
 
@@ -599,19 +633,6 @@ public class FXMLGameSceneController implements Initializable {
         newScene.getRoot().requestFocus();
         appStage.setScene(newScene);
         appStage.show();
-    }
-    
-    //EndScreen Goes to main menu after win/loss
-    @FXML
-    private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-
-        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
-
-        Scene newScene = new Scene(adminScene);
-        Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
-        appStage.setScene(newScene);
-        appStage.show();
-
     }
 
 }
