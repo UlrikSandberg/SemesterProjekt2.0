@@ -1,4 +1,4 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -45,7 +45,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-
 /**
  * FXML Controller class
  *
@@ -53,7 +52,6 @@ import javafx.stage.Stage;
  */
 public class FXMLGameSceneController implements Initializable {
 
-    
     private IBussiness business;
     private IItem[] listOfItems;
     private ArrayList<IItem> roomItems;
@@ -65,7 +63,7 @@ public class FXMLGameSceneController implements Initializable {
     private ArrayList<String> answerOptions;
     private String selectedAnswer = null;
     private Boolean dialogueIsActive = true;
-    
+
     @FXML
     private AnchorPane gameAnchor;
     @FXML
@@ -118,7 +116,12 @@ public class FXMLGameSceneController implements Initializable {
     private AnchorPane winScene;
     @FXML
     private ImageView winSceneImage;
-
+    @FXML
+    private Button highScore;
+    @FXML
+    private Button restart;
+    @FXML
+    private Button exitToMain;
 
     /**
      * Initializes the controller class.
@@ -126,7 +129,7 @@ public class FXMLGameSceneController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
+
         //Hide all exits!
         this.itemNodes = new HashMap<IItem, ImageView>();
         this.roomItems = new ArrayList<>();
@@ -137,26 +140,24 @@ public class FXMLGameSceneController implements Initializable {
         eastDoor.setVisible(false);
         northDoor.setVisible(false);
         southDoor.setVisible(false);
-        
+
         business = UI.getInstance().getBusiness();
         playerName.setText(business.getPlayer().getPlayerName());
         gameAnchor.setStyle("-fx-background-color: red;");
         hudAnchor.setStyle("-fx-background-color: white;");
         dialogueScene.setStyle("-fx-background-color: gray;");
         dialogueScene.setVisible(false);
-        
-        
+
         winScene.setVisible(false);
         setInventoryList();
-        setExits();   
-        
-    }    
-    
-    
+        setExits();
+
+    }
+
     @FXML
     private void keyPressed(KeyEvent event) {
-        
-        switch(event.getCode()) {
+
+        switch (event.getCode()) {
             case UP:
                 this.goUp();
                 break;
@@ -170,111 +171,108 @@ public class FXMLGameSceneController implements Initializable {
                 this.goLeft();
                 break;
         }
-               
+
     }
 
-    
     private void setInventoryList() {
-        
-         //Fetch current buildings
+
+        //Fetch current buildings
         listOfItems = business.getInventory();
-        
+
         //Convert objects to string for insertion in listview
         ObservableList<String> data = FXCollections.observableArrayList();
-        for(IItem name: listOfItems) {
+        for (IItem name : listOfItems) {
             data.add(name.toString());
         }
-        
+
         //Set converted toString object into listView
         this.inventoryList.setItems(data);
-        
-        if(listOfItems.length == 0) {
+
+        if (listOfItems.length == 0) {
             inventoryLabel.setText("There are currently no items in your inventory");
-        }    
+        }
     }
-    
-    
-    
+
     private void goRight() {
-        
+
         double newY = this.player.getBoundsInParent().getMinY();
         double newX = this.player.getBoundsInParent().getMinX() + 20;
-        if(newX > gameAnchor.getWidth() - 20 - this.player.getBoundsInParent().getWidth()) {
+        if (newX > gameAnchor.getWidth() - 20 - this.player.getBoundsInParent().getWidth()) {
             newX = gameAnchor.getWidth() - 20 - this.player.getBoundsInParent().getWidth();
         }
         this.player.relocate(newX, newY);
         this.detectCollision();
-        
+
     }
 
     private void goLeft() {
-        
+
         double newY = this.player.getBoundsInParent().getMinY();
         double newX = this.player.getBoundsInParent().getMinX() - 20;
-        if(newX < gameAnchor.getBoundsInParent().getMinX() + 20) {
+        if (newX < gameAnchor.getBoundsInParent().getMinX() + 20) {
             newX = gameAnchor.getBoundsInParent().getMinX() + 20;
         }
         this.player.relocate(newX, newY);
         this.detectCollision();
-        
+
     }
-      
+
     private void goUp() {
-        
+
         double newY = this.player.getBoundsInParent().getMinY() - 20;
         double newX = this.player.getBoundsInParent().getMinX();
-        if(newY < 20) {
+        if (newY < 20) {
             newY = 20;
         }
         this.player.relocate(newX, newY);
         this.detectCollision();
     }
-    
+
     private void goDown() {
-        
+
         double newY = this.player.getBoundsInParent().getMinY() + 20;
         double newX = this.player.getBoundsInParent().getMinX();
-        if(newY > this.gameAnchor.getBoundsInParent().getHeight() - 20 - this.hudAnchor.getBoundsInParent().getHeight() - this.player.getBoundsInParent().getHeight()) {
+        if (newY > this.gameAnchor.getBoundsInParent().getHeight() - 20 - this.hudAnchor.getBoundsInParent().getHeight() - this.player.getBoundsInParent().getHeight()) {
             newY = this.gameAnchor.getBoundsInParent().getHeight() - 20 - this.hudAnchor.getBoundsInParent().getHeight() - this.player.getBoundsInParent().getHeight();
         }
         this.player.relocate(newX, newY);
         this.detectCollision();
-        
+
     }
-    
+
     private void detectCollision() {
-        
-        if(player.getBoundsInParent().intersects(eastDoor.getBoundsInParent())) {
-            
-            if(this.eastDoor.isVisible() != false) {
-                if(business.goNextRoom(DirectionType.EAST)) {
+
+        if (player.getBoundsInParent().intersects(eastDoor.getBoundsInParent())) {
+
+            if (this.eastDoor.isVisible() != false) {
+                if (business.goNextRoom(DirectionType.EAST)) {
                     setExits();
                 } else { //There is an exit blocking the way
                     INPC lock = business.getExitNPC(DirectionType.EAST);
                     dialogueScene(lock, business.getPlayer());
                 }
             }
-        } else if(player.getBoundsInParent().intersects(westDoor.getBoundsInParent())) {
-            if(this.westDoor.isVisible() != false) {
-                if(business.goNextRoom(DirectionType.WEST)) {
+        } else if (player.getBoundsInParent().intersects(westDoor.getBoundsInParent())) {
+            if (this.westDoor.isVisible() != false) {
+                if (business.goNextRoom(DirectionType.WEST)) {
                     setExits();
                 } else { //There is an exit blocking the way
                     INPC lock = business.getExitNPC(DirectionType.WEST);
                     dialogueScene(lock, business.getPlayer());
                 }
-            }   
-        } else if(player.getBoundsInParent().intersects(northDoor.getBoundsInParent())) {
-            if(this.northDoor.isVisible() != false) {
-                if(business.goNextRoom(DirectionType.NORTH)) {
+            }
+        } else if (player.getBoundsInParent().intersects(northDoor.getBoundsInParent())) {
+            if (this.northDoor.isVisible() != false) {
+                if (business.goNextRoom(DirectionType.NORTH)) {
                     setExits();
                 } else { //There is an exit blocking the way
                     INPC lock = business.getExitNPC(DirectionType.NORTH);
                     dialogueScene(lock, business.getPlayer());
                 }
             }
-        } else if(player.getBoundsInParent().intersects(southDoor.getBoundsInParent())) {
-            if(this.southDoor.isVisible() != false) {
-                if(business.goNextRoom(DirectionType.SOUTH)) {
+        } else if (player.getBoundsInParent().intersects(southDoor.getBoundsInParent())) {
+            if (this.southDoor.isVisible() != false) {
+                if (business.goNextRoom(DirectionType.SOUTH)) {
                     setExits();
                 } else { //There is an exit blocking the way
                     INPC lock = business.getExitNPC(DirectionType.SOUTH);
@@ -282,46 +280,43 @@ public class FXMLGameSceneController implements Initializable {
                 }
             }
         }
-        
+
         //Detect collision if items exist in rooms
-        
-        if(roomItems.size() > 0) {
-            
-            for(IItem item: roomItems) {
-                if(this.itemNodes.get(item) != null) {
+        if (roomItems.size() > 0) {
+
+            for (IItem item : roomItems) {
+                if (this.itemNodes.get(item) != null) {
                     ImageView itemNode = this.itemNodes.get(item);
-                    if(player.getBoundsInParent().intersects(itemNode.getBoundsInParent())) {
+                    if (player.getBoundsInParent().intersects(itemNode.getBoundsInParent())) {
                         System.out.println("Should pickup: " + item.toString());
-                        if(UI.getInstance().getBusiness().takeItem(item)){
+                        if (UI.getInstance().getBusiness().takeItem(item)) {
                             this.removeItemFromScene(item);
                             this.setInventoryList();
                             this.itemNodes.remove(item);
                         }
                     }
                 }
-            }    
+            }
         }
-        
-        if(roomNPCS.size() > 0) {
-            
-            for(INPC npc: roomNPCS) {
-                if(this.NPCNodes.get(npc) != null) {
+
+        if (roomNPCS.size() > 0) {
+
+            for (INPC npc : roomNPCS) {
+                if (this.NPCNodes.get(npc) != null) {
                     ImageView npcNode = this.NPCNodes.get(npc);
-                    if(player.getBoundsInParent().intersects(npcNode.getBoundsInParent())) {
-                        System.out.println("Should begin dialog with: "+ npc.getName());
+                    if (player.getBoundsInParent().intersects(npcNode.getBoundsInParent())) {
+                        System.out.println("Should begin dialog with: " + npc.getName());
                         //npc.dialogue((Player) UI.getInstance().getBusiness().getPlayer());
                         this.dialogueScene(npc, UI.getInstance().getBusiness().getPlayer());
-                       
-                        
-                    }      
+
+                    }
                 }
             }
         }
     }
 
-    
     private void dialogueScene(INPC npc, IPlayer player) {
-        
+
         System.out.println("Should open dialogue box for npc: " + npc.getName());
         dialogueScene.setVisible(true);
         answerBtn.setText("Answer");
@@ -333,266 +328,241 @@ public class FXMLGameSceneController implements Initializable {
         //npc.dialogue((Player)player);
         this.currentDialogue = npc.dialogue((Player) player);
         this.DialogueLoop(currentDialogue, null, (Player) player);
-        
-        
+
     }
-    
-    
+
     private void DialogueLoop(IDialogueBlock currentDialogue, String answer, Player player) {
-        
+
         //Change state according to the given answer
         currentDialogue.changeState(answer);
         dialogueTextArea.setText(currentDialogue.dialogue((Player) player));
         answerOptions = currentDialogue.getOptions();
         ObservableList<String> data = FXCollections.observableArrayList();
         System.out.println(answerOptions.size());
-        if(answerOptions.size() == 0) {
-           this.dialogueIsActive = false;
-           answerBtn.setText("Leave conversation");
+        if (answerOptions.size() == 0) {
+            this.dialogueIsActive = false;
+            answerBtn.setText("Leave conversation");
         }
         //Populate dropdown with answer options
-        for(String answers: answerOptions) {
+        for (String answers : answerOptions) {
             String newString = answers;
             data.add(newString);
         }
         //Set converted toString object into listView
         this.answersListView.setItems(data);
         this.setInventoryList();
-        
-        
-        if(player.didWin()) {
+
+        if (player.didWin()) {
             System.out.println("The player won the game how awesome!");
             winScene.setVisible(true);
         }
-        if(player.didLose()) {
+        if (player.didLose()) {
             System.out.println("The palyer lost the game how awesome!");
             winScene.setVisible(true);
-                    
+
         }
-        
+
     }
-    
-    
-    
+
     @FXML
     private void setFocusForGameScene(MouseEvent event) {
         ObservableList<String> selected;
         selected = inventoryList.getSelectionModel().getSelectedItems();
         int IP = inventoryList.getSelectionModel().getSelectedIndex();
         this.selectedItem = this.listOfItems[IP];
-        
-        System.out.println("We selected item: "+this.selectedItem.getName());
-        
+
+        System.out.println("We selected item: " + this.selectedItem.getName());
+
     }
-    
-    
-    
-    
+
     private void setExits() {
-        
+
         System.out.println("Setting exits");
-        
+
         //Clear room contet
         westDoor.setVisible(false);
         eastDoor.setVisible(false);
         northDoor.setVisible(false);
         southDoor.setVisible(false);
-        
-        for(IItem item: roomItems) {
+
+        for (IItem item : roomItems) {
             this.removeItemFromScene(item);
         }
-        if(itemNodes.isEmpty() == false) {
+        if (itemNodes.isEmpty() == false) {
             this.itemNodes.clear();
         }
-        if(roomItems.isEmpty() == false) {
+        if (roomItems.isEmpty() == false) {
             this.roomItems.clear();
         }
-        
-        for(INPC npc: roomNPCS) {
+
+        for (INPC npc : roomNPCS) {
             this.removeNPCFromScene(npc);
         }
-        
-        if(NPCNodes.isEmpty() == false) {
+
+        if (NPCNodes.isEmpty() == false) {
             this.NPCNodes.clear();
         }
-        if(roomNPCS.isEmpty() == false) {
+        if (roomNPCS.isEmpty() == false) {
             this.roomNPCS.clear();
         }
-        
-        
+
         currentRoom.setText(business.getCurrentRoom().getShortDescription());
-        
+
         backgroundImage.setImage(business.getCurrentRoom().getImage());
-        
+
         //Fetch exits for currentRoom
         ArrayList<DirectionType> list = business.getExists();
         System.out.println(list.size());
-        for(DirectionType type: list) {
+        for (DirectionType type : list) {
             System.out.println(type.toString());
         }
-        
-        if(list.contains(DirectionType.EAST)) {
+
+        if (list.contains(DirectionType.EAST)) {
             eastDoor.setVisible(true);
         }
-        if(list.contains(DirectionType.WEST)) {
+        if (list.contains(DirectionType.WEST)) {
             westDoor.setVisible(true);
         }
-        if(list.contains(DirectionType.SOUTH)) {
+        if (list.contains(DirectionType.SOUTH)) {
             southDoor.setVisible(true);
         }
-        if(list.contains(DirectionType.NORTH)) {
+        if (list.contains(DirectionType.NORTH)) {
             northDoor.setVisible(true);
         }
-        
+
         //Fetch items from the current room
         roomItems = business.getRoomItems();
         System.out.println(roomItems.size());
         //Spawn a random imageView on the field for each item currently in the room
-        for(IItem item: roomItems) {
+        for (IItem item : roomItems) {
             this.spawnItemOnScene(item);
         }
-        
+
         //Spawn NPC on scene relative to the
         //Fetch NPCs to spawn
         ArrayList<INPC> listOfNPCS = UI.getInstance().getBusiness().getRoomNPCS();
-        System.out.println("In this room there is: " +listOfNPCS.size() + " NPCs, they are!");
+        System.out.println("In this room there is: " + listOfNPCS.size() + " NPCs, they are!");
         int numberOfNPCS = 0;
-        for(INPC npc: listOfNPCS) {
+        for (INPC npc : listOfNPCS) {
             numberOfNPCS += 1;
             System.out.println(npc.getName());
             this.roomNPCS.add(npc);
             this.spawnNPCOnScene(npc, numberOfNPCS);
         }
-        
+
         this.setInventoryList();
-        
-        
-        
+
         //Set player in the middle of the screen!
         player.relocate(500, 200);
-            
-    }  
-    
+
+    }
+
     private void spawnNPCOnScene(INPC npc, int number) {
-        
+
         ImageView newImage = new ImageView(npc.getImage());
-        
+
         this.NPCNodes.put(npc, newImage);
-        
+
         gameAnchor.getChildren().add(newImage);
         newImage.relocate(newImage.getBoundsInParent().getMinX() + (number * 300), 0);
-        
-       if(eastDoor.isVisible() && !westDoor.isVisible()) { //Check if opposite is visible if not 
-           System.out.println("Should spawn NPC left");
-       } else
-       if(westDoor.isVisible() && !eastDoor.isVisible()) { //Check if opposite is visible if not 
-           System.out.println("Should spawn NPC right");
-       } else
-       if(southDoor.isVisible() && !northDoor.isVisible()) { //Check if opposite is visible if not 
-           System.out.println("Should spawn NPC up");
-       } else
-       if(northDoor.isVisible() && !southDoor.isVisible()) { //Check if opposite is visible if not 
-           System.out.println("Should spawn NPC down");
-       } else
-       if(northDoor.isVisible() && southDoor.isVisible()) { //Check if npc should be spawned on the sides!
-           System.out.println("Should spawn npc at the sides!");
-       } else
-       if(eastDoor.isVisible() && westDoor.isVisible()) { //Check if npc should be spawned up or down
-           System.out.println("Should spawn npc at bot or top");
-       }
-        
-       
-       
-        
+
+        if (eastDoor.isVisible() && !westDoor.isVisible()) { //Check if opposite is visible if not 
+            System.out.println("Should spawn NPC left");
+        } else if (westDoor.isVisible() && !eastDoor.isVisible()) { //Check if opposite is visible if not 
+            System.out.println("Should spawn NPC right");
+        } else if (southDoor.isVisible() && !northDoor.isVisible()) { //Check if opposite is visible if not 
+            System.out.println("Should spawn NPC up");
+        } else if (northDoor.isVisible() && !southDoor.isVisible()) { //Check if opposite is visible if not 
+            System.out.println("Should spawn NPC down");
+        } else if (northDoor.isVisible() && southDoor.isVisible()) { //Check if npc should be spawned on the sides!
+            System.out.println("Should spawn npc at the sides!");
+        } else if (eastDoor.isVisible() && westDoor.isVisible()) { //Check if npc should be spawned up or down
+            System.out.println("Should spawn npc at bot or top");
+        }
+
     }
-    
-    
+
     private void removeItemFromScene(IItem item) {
-        
+
         ImageView itemToRemove = this.itemNodes.get(item);
-        gameAnchor.getChildren().remove(itemToRemove);   
+        gameAnchor.getChildren().remove(itemToRemove);
     }
-    
+
     private void removeNPCFromScene(INPC npc) {
-        
+
         ImageView itemToRemove = this.NPCNodes.get(npc);
         gameAnchor.getChildren().remove(itemToRemove);
-        
+
     }
-    
+
     private void selectItem() {
-        
-        
+
     }
-    
-    
+
     private void spawnItemOnScene(IItem item) {
-        
+
         ImageView newImage = new ImageView(new Image(getClass().getResourceAsStream("/Presentation/AssetsLibrary/Key-PNG-Image.png")));
         gameAnchor.getChildren().add(newImage);
-        
+
         //Create game bounds for creation of objects! 
         int leftBounds = (int) this.westDoor.getBoundsInParent().getMaxX() + 10;
         int rightBounds = (int) ((int) this.eastDoor.getBoundsInParent().getMinX() - 10 - newImage.getBoundsInParent().getWidth());
         int upperBounds = (int) this.northDoor.getBoundsInParent().getMaxY() + 10;
         int lowerBounds = (int) this.southDoor.getBoundsInParent().getMinY() - 10;
-        
-        
-        int xRange = (int)(Math.random() * ((rightBounds - leftBounds) + 1) + leftBounds);
-        int yRange = (int)(Math.random() * ((upperBounds - lowerBounds) + 1) + lowerBounds);
-       
+
+        int xRange = (int) (Math.random() * ((rightBounds - leftBounds) + 1) + leftBounds);
+        int yRange = (int) (Math.random() * ((upperBounds - lowerBounds) + 1) + lowerBounds);
+
         newImage.relocate(xRange, yRange);
         this.itemNodes.put(item, newImage);
-        
+
     }
-    
-    
+
     @FXML
     private void saveAndExit(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
         business.saveGame();
-        
+
         Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
-        
+
         Scene newScene = new Scene(adminScene);
         Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
         appStage.setScene(newScene);
         appStage.show();
-        
+
     }
-    
+
     @FXML
     private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-        
-       
+
         Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
-        
+
         Scene newScene = new Scene(adminScene);
         Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
         appStage.setScene(newScene);
         appStage.show();
-        
+
     }
 
     @FXML
     private void dropItemAction(ActionEvent event) {
-        
-        if(this.selectedItem != null) {
-            
+
+        if (this.selectedItem != null) {
+
             UI.getInstance().getBusiness().getCurrentRoom().addItemToRoom(selectedItem);
             UI.getInstance().getBusiness().removePlayerItem(selectedItem);
             this.spawnItemOnScene(selectedItem);
             this.roomItems.add(selectedItem);
             this.setInventoryList();
             this.selectedItem = null;
-            
-        }     
+
+        }
     }
 
     @FXML
     private void answerAction(ActionEvent event) {
-        
-        if(dialogueIsActive == true) {
-            if(selectedAnswer != null) {
+
+        if (dialogueIsActive == true) {
+            if (selectedAnswer != null) {
                 this.DialogueLoop(currentDialogue, selectedAnswer, (Player) UI.getInstance().getBusiness().getPlayer());
             }
         } else {
@@ -604,18 +574,41 @@ public class FXMLGameSceneController implements Initializable {
 
     @FXML
     private void selectAnswer(MouseEvent event) {
-        
+
         ObservableList<String> selected;
         selected = answersListView.getSelectionModel().getSelectedItems();
         int IP = answersListView.getSelectionModel().getSelectedIndex();
         this.selectedAnswer = this.answerOptions.get(IP);
-        
-        System.out.println("We selected item: "+ this.selectedAnswer);
-        
-        
+
+        System.out.println("We selected item: " + this.selectedAnswer);
+
     }
-    
-   
-    
-    
+
+    @FXML
+    private void HighScore(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+
+        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLHighScore.fxml"));
+
+        Scene newScene = new Scene(adminScene);
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(newScene);
+        appStage.show();
+
+    }
+
+    @FXML
+    private void startGame(ActionEvent event) throws IOException {
+
+        business.startNewGame(business.getPlayer().getPlayerName());
+
+        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLGameScene.fxml"));
+
+        Scene newScene = new Scene(adminScene);
+
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        newScene.getRoot().requestFocus();
+        appStage.setScene(newScene);
+        appStage.show();
+    }
+
 }
