@@ -596,8 +596,9 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //EndScreen restart (New game same player)
     @FXML
-    private void startGame(ActionEvent event) throws IOException {
+    private void restart(ActionEvent event) throws IOException {
 
         business.startNewGame(business.getPlayer().getPlayerName());
 
