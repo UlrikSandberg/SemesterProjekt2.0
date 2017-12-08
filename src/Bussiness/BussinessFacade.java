@@ -147,17 +147,19 @@ public class BussinessFacade implements IBussiness {
     @Override
     public void loadHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
         IHighScore score = dataFacade.loadHighScore();
-        System.out.println(score.getScores().get(0).getName());
-        
+        for (int i = 0; i < 4; i++) {
+            System.out.println(score.getScores().get(i).getName());
+        }
+
         game.loadHighscore(score);
     }
-    
+
     @Override
     public INPC getExitNPC(DirectionType direction) {
-        
+
         //Get exitBlock for chosen direction
         return game.getExitBlock(direction);
-    
+
     }
 
 }
