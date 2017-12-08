@@ -175,7 +175,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
-    //
+    //Loads Player inventory to listview
     private void setInventoryList() {
 
         //Fetch current buildings

@@ -60,12 +60,9 @@ public class FXMLHighScoreController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         bussinesFacade = UI.getInstance().getBusiness();
         // TODO
-        //For-loop
         
-       
-        System.out.println("John");
         try {
-            something();
+            setScoreboard();
         } catch (IOException ex) {
             ex.getCause();
             ex.getMessage();
@@ -73,23 +70,21 @@ public class FXMLHighScoreController implements Initializable {
             ex.getCause();
             ex.getMessage();
         }
-        System.out.println("Matt");
+        
     }
 
-    public void something() throws IOException, FileNotFoundException, ClassNotFoundException {
-        System.out.println("hello");
-        //       System.out.println(highScore.getScores().size());
-        System.out.println("b" + bussinesFacade + "\th");
-        System.out.println("c" + bussinesFacade.getHighscore() + "\tj");
-        System.out.println(bussinesFacade.getHighscore().getScores().get(0).getName());
-
-        FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
+    public void setScoreboard() throws IOException, FileNotFoundException, ClassNotFoundException {
+        
+        //First place Name and Score
         FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
         FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");
+        //Second place Name and Score
         SecondPlaceName.setText(bussinesFacade.getHighscore().getScores().get(1).getName());
         SecondPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(1).getScore() + "");
+        //Third place Name and Score
         ThirdPlaceName.setText(bussinesFacade.getHighscore().getScores().get(2).getName());
         ThirdPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(2).getScore() + "");
+        //Fourth place Name and Score
         FourthPlaceName.setText(bussinesFacade.getHighscore().getScores().get(3).getName());
         FourthPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(3).getScore() + "");
     }
