@@ -532,18 +532,6 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     @FXML
-    private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
-
-        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
-
-        Scene newScene = new Scene(adminScene);
-        Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
-        appStage.setScene(newScene);
-        appStage.show();
-
-    }
-
-    @FXML
     private void dropItemAction(ActionEvent event) {
 
         if (this.selectedItem != null) {
@@ -584,6 +572,7 @@ public class FXMLGameSceneController implements Initializable {
 
     }
 
+    //EndScreen Lests player see ScoreBoard of top 4 ranking players
     @FXML
     private void HighScore(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
 
@@ -610,6 +599,19 @@ public class FXMLGameSceneController implements Initializable {
         newScene.getRoot().requestFocus();
         appStage.setScene(newScene);
         appStage.show();
+    }
+    
+    //EndScreen Goes to main menu after win/loss
+    @FXML
+    private void exitNoSave(ActionEvent event) throws IOException, FileNotFoundException, ClassNotFoundException {
+
+        Parent adminScene = FXMLLoader.load(getClass().getResource("FXMLTaxFraudMainMenu.fxml"));
+
+        Scene newScene = new Scene(adminScene);
+        Stage appStage = (Stage) ((Node) southDoor).getScene().getWindow();
+        appStage.setScene(newScene);
+        appStage.show();
+
     }
 
 }
