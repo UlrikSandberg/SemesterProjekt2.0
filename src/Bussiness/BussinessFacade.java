@@ -160,4 +160,9 @@ public class BussinessFacade implements IBussiness {
     
     }
 
+    @Override
+    public void checkHighscore() {
+        game.getPlayer().getPlayerName();
+    }
+
 }

@@ -34,7 +34,7 @@ public class HighScore implements IHighScore, Serializable {
 //        scores.add(score4);
     }
     
-    public void viableForHighscore(PlayerScore score){
+    public void viableForHighScore(PlayerScore score){
         
         scores.add(score);
         
@@ -53,7 +53,7 @@ public class HighScore implements IHighScore, Serializable {
         
     }
 
-    @Override
+    
     public ArrayList<IScore> getScores() {
         return this.scores;
     }

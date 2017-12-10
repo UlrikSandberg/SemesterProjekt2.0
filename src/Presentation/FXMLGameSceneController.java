@@ -361,6 +361,7 @@ public class FXMLGameSceneController implements Initializable {
         
         
         if(player.didWin()) {
+            business.checkHighscore();
             System.out.println("The player won the game how awesome!");
             winScene.setVisible(true);
         }
