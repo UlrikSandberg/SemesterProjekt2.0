@@ -7,6 +7,7 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.BulterDialogueBlock2;
 import Bussiness.DialogueBlocks.BulterDialogueBlock3;
 import java.util.ArrayList;
@@ -131,7 +132,7 @@ public class Bulter extends NPC {
     }
 
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom;
     }
 

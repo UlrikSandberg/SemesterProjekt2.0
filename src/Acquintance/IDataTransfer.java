@@ -5,6 +5,7 @@
  */
 package Acquintance;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -18,6 +19,7 @@ public interface IDataTransfer {
     HashMap<String, IRoom> getRooms();
     IRoom getCurrentRoom();
     IRoom getGuardRoom();
+    ArrayList<IRoom> getGuardrooms();
     
 }
 

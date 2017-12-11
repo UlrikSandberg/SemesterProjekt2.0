@@ -27,7 +27,7 @@ public class Game {
     private Room currentRoom;
     private Room guardRoom;
     private Player player;
-    private ArrayList<Room> guardRooms;
+    private ArrayList<IRoom> guardRooms;
     private IHighScore highscore;
     //Rooms
         Room lobby, cafeteria, WestHall, MaleRestroom, FemaleRestroom, EastHall, office, copyRoom, archives, money, utillity;
@@ -229,11 +229,11 @@ public class Game {
         listOfRooms.put("archives", archives);
         listOfRooms.put("money", money);
         listOfRooms.put("utility", utillity);
-        
+        player.getScore().beginTimer();
     }
     
     public IDataTransfer saveObjects() {
-        IDataTransfer transfer = new DataTransfer(player, currentRoom, listOfRooms, guardRoom);
+        IDataTransfer transfer = new DataTransfer(player, currentRoom, listOfRooms, guardRoom, guardRooms);
                 
         System.out.println("Game saved!");
         return transfer;
@@ -242,7 +242,7 @@ public class Game {
     
     public void loadObjects(IDataTransfer transfer) {
         
-        //player.getScore().pauseTimer();
+        player.getScore().pauseTimer();
         System.out.println("game.load");        
         HashMap<String, IRoom> rooms = transfer.getRooms();
         
@@ -253,6 +253,7 @@ public class Game {
         cafeteria.getInhabitant("cafeteriaLady").setImage("/Presentation/AssetsLibrary/CafeteriaLadySprite.jpg");
         cafeteria.setImage("/Presentation/AssetsLibrary/Cafeteria.jpg");
         WestHall = (Room) rooms.get("WestHall");
+        WestHall.getExitBlock(DirectionType.WEST).setImage("/Presentation/AssetsLibrary/Lock.png");
         WestHall.setImage("/Presentation/AssetsLibrary/Hallway.jpg");
         EastHall = (Room) rooms.get("EastHall");
         EastHall.setImage("/Presentation/AssetsLibrary/Hallway.jpg");
@@ -281,6 +282,8 @@ public class Game {
        
         guardRoom = (Room) transfer.getGuardRoom();
         guardRoom.getInhabitant("guard").setImage("/Presentation/AssetsLibrary/Guard.png");
+        
+        guardRooms = transfer.getGuardrooms();
         
         player = (Player) transfer.getPlayer();
         

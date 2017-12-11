@@ -27,6 +27,6 @@ public interface INPC {
     public IDialogueBlock dialogue(Player player);
     public Image getImage();
     public void setImage(String filepath);
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom);
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom);
     
 }

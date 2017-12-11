@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Bussiness;
+import Acquintance.IRoom;
 import java.util.ArrayList;
 
 /**
@@ -12,5 +13,5 @@ import java.util.ArrayList;
  */
 public interface IGuard {
     
-    Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom);
+    Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom);
 }

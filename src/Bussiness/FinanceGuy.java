@@ -7,6 +7,7 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.FinanceGuyDialogueBlock1;
 import Bussiness.DialogueBlocks.FinanceGuyDialogueBlock2;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class FinanceGuy extends NPC {
     }
     
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom;
     }
     

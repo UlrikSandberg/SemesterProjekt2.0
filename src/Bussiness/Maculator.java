@@ -11,6 +11,7 @@ package Bussiness;
  */
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.MaculatorDialogueBlock1;
 import Bussiness.DialogueBlocks.MaculatorDialogueBlock2;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class Maculator extends NPC {
     }
     
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom;
     }
 }

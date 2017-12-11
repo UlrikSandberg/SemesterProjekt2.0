@@ -9,6 +9,7 @@ import Acquintance.IDataTransfer;
 import Acquintance.IPlayer;
 import Acquintance.IRoom;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -21,13 +22,15 @@ public class DataTransfer implements IDataTransfer, Serializable{
     private IRoom currentRoom;
     private IPlayer player;
     private IRoom guardRoom;
+    private ArrayList<IRoom> guardRooms;
     
     
-    DataTransfer(IPlayer player, IRoom room, HashMap<String, IRoom> rooms, IRoom guardRoom) {
+    DataTransfer(IPlayer player, IRoom room, HashMap<String, IRoom> rooms, IRoom guardRoom, ArrayList<IRoom> guardrooms) {
         this.currentRoom = room;
         this.player = player;
         this.rooms = rooms;
         this.guardRoom = guardRoom;
+        this.guardRooms = guardrooms;
     }
 
     @Override
@@ -48,6 +51,11 @@ public class DataTransfer implements IDataTransfer, Serializable{
     @Override
     public IRoom getGuardRoom() {
         return this.guardRoom;
+    }
+
+    @Override
+    public ArrayList<IRoom> getGuardrooms() {
+        return guardRooms;
     }
 
 }

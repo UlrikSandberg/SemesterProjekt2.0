@@ -7,6 +7,7 @@ package Bussiness;
 
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.TalkingToiletDialogueBlock1;
 import Bussiness.DialogueBlocks.TalkingToiletDialogueBlock2;
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ public class TalkingToilet extends NPC {
     }
 
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom;
     }
     

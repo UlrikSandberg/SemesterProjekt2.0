@@ -11,6 +11,7 @@ package Bussiness;
  */
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock1;
 import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock2;
 import Bussiness.DialogueBlocks.OfficeGuyDialogueBlock3;
@@ -134,7 +135,7 @@ public class OfficeGuy extends NPC {
     }
     
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom;
     }
     

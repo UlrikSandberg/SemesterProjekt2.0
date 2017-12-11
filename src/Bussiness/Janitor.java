@@ -6,6 +6,7 @@
 package Bussiness;
 import Bussiness.DialogueBlocks.BulterDialogueBlock1;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import Bussiness.DialogueBlocks.JanitorDialogueBlock1;
 import Bussiness.DialogueBlocks.JanitorDialogueBlock2;
 import Bussiness.DialogueBlocks.JanitorDialogueBlock3;
@@ -143,7 +144,7 @@ public class Janitor extends NPC {
         }
 
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         return guardRoom; //To change body of generated methods, choose Tools | Templates.
     }
     

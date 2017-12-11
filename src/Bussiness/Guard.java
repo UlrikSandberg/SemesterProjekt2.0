@@ -9,6 +9,7 @@ import Bussiness.DialogueBlocks.GuardDialogueBlock1;
 import Bussiness.DialogueBlocks.GuardDialogueBlock2;
 import Bussiness.DialogueBlocks.GuardDialogueBlock3;
 import Acquintance.IDialogueBlock;
+import Acquintance.IRoom;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -160,10 +161,10 @@ public class Guard extends NPC implements IGuard {
     }
 
     @Override
-    public Room relocateGuard(ArrayList<Room> guardRooms, Room guardRoom) {
+    public Room relocateGuard(ArrayList<IRoom> guardRooms, Room guardRoom) {
         guardRoomList = new ArrayList();
-        for (Room room : guardRooms) {
-            guardRoomList.add(room);
+        for (IRoom room : guardRooms) {
+            guardRoomList.add((Room) room);
         }
         guardRoomList.remove(5);
         guardRoomList.remove(8 - 1);
