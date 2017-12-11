@@ -338,6 +338,8 @@ public class FXMLGameSceneController implements Initializable {
         //npc.dialogue((Player)player);
         this.currentDialogue = npc.dialogue((Player) player);
         this.DialogueLoop(currentDialogue, null, (Player) player);
+        this.dialogueScene.toFront();
+        
 
     }
 
