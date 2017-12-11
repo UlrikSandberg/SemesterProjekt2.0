@@ -61,6 +61,7 @@ public class Game {
         this.highscore = new HighScore();
         createObjects();
         
+        
     }
 
     Game() {

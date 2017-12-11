@@ -33,6 +33,7 @@ public interface IBussiness {
     IHighScore getHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
     void saveHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
     void loadHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
+    void checkHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
     
     
 }

@@ -13,6 +13,7 @@ import Acquintance.IItem;
 import Acquintance.INPC;
 import Acquintance.IPlayer;
 import Acquintance.IRoom;
+import Acquintance.IScore;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class BussinessFacade implements IBussiness {
 
     private IData dataFacade;
-    private Game game;
+    private Game game = new Game();
 
     @Override
     public void injectData(IData dataLayer) {
@@ -131,11 +132,10 @@ public class BussinessFacade implements IBussiness {
 
     @Override
     public IHighScore getHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
-        game = new Game();
+        
         loadHighscore();
-        System.out.println("HighScore loaded!");
 
-        return this.game.getHighscore();
+        return game.getHighscore();
     }
 
     @Override
@@ -146,12 +146,13 @@ public class BussinessFacade implements IBussiness {
 
     @Override
     public void loadHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
+//        game.loadHighscore(dataFacade.loadHighScore());
+        
         IHighScore score = dataFacade.loadHighScore();
-        for (int i = 0; i < 4; i++) {
-            System.out.println(score.getScores().get(i).getName());
+        
+        if (score != null) {
+            game.loadHighscore(score);
         }
-
-        game.loadHighscore(score);
     }
 
     @Override
@@ -160,6 +161,13 @@ public class BussinessFacade implements IBussiness {
         //Get exitBlock for chosen direction
         return game.getExitBlock(direction);
 
+    }
+
+    @Override
+    public void checkHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
+        loadHighscore();
+        PlayerScore playerscore = new PlayerScore(game.getPlayerRoot().getPlayerName(), game.getPlayerRoot().getScore().getTotalScore());
+        game.getHighscore().viableForHighScore(playerscore);
     }
 
 }

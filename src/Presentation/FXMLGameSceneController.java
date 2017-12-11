@@ -19,6 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -360,9 +362,32 @@ public class FXMLGameSceneController implements Initializable {
         //Set converted toString object into listView
         this.answersListView.setItems(data);
         this.setInventoryList();
-
-        //Game Won
-        if (player.didWin()) {
+        
+        
+        if(player.didWin()) {
+            try {
+                business.checkHighscore();
+            } catch (IOException ex) {
+                System.out.println("checkHS IOExeption");
+                System.out.println(ex.getCause());
+                System.out.println(ex.getMessage());
+            } catch (ClassNotFoundException ex) {
+                System.out.println("checkHS ClassNotFoundExeption");
+                System.out.println(ex.getCause());
+                System.out.println(ex.getMessage());
+            }
+            try {
+                business.saveHighscore();
+            } catch (IOException ex) {
+                System.out.println("saveHS IOExeption");
+                System.out.println(ex.getCause());
+                System.out.println(ex.getMessage());            
+            } catch (ClassNotFoundException ex) {
+                System.out.println("saveHS IOExeption");
+                System.out.println(ex.getCause());
+                System.out.println(ex.getMessage());            
+            }
+            
             System.out.println("The player won the game how awesome!");
             winScene.setVisible(true);
         }

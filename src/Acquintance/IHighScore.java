@@ -5,6 +5,7 @@
  */
 package Acquintance;
 
+import Bussiness.PlayerScore;
 import java.util.ArrayList;
 
 /**
@@ -14,5 +15,5 @@ import java.util.ArrayList;
 public interface IHighScore {
     
     ArrayList<IScore> getScores();
-    
+    boolean viableForHighScore(PlayerScore playerscore);
 }

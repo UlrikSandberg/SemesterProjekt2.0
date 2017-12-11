@@ -64,17 +64,18 @@ public class FXMLHighScoreController implements Initializable {
         try {
             setScoreboard();
         } catch (IOException ex) {
-            ex.getCause();
-            ex.getMessage();
+            System.out.println("setScoreboard IOException");
+            System.out.println(ex.getCause());
+            System.out.println(ex.getMessage());
         } catch (ClassNotFoundException ex) {
-            ex.getCause();
-            ex.getMessage();
+            System.out.println("setScoreboard ClassNotFoundException");
+            System.out.println(ex.getCause());
+            System.out.println(ex.getMessage());
         }
         
     }
 
     public void setScoreboard() throws IOException, FileNotFoundException, ClassNotFoundException {
-        
         //First place Name and Score
         FirstPlaceName.setText(bussinesFacade.getHighscore().getScores().get(0).getName());
         FirstPlaceScore.setText(bussinesFacade.getHighscore().getScores().get(0).getScore() + "");

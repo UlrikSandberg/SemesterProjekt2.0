@@ -23,10 +23,10 @@ public class HighScore implements IHighScore, Serializable {
         
         scores = new ArrayList<>();
         
-//        PlayerScore score1 = new PlayerScore("jon", 87);
-//        PlayerScore score2 = new PlayerScore("Mike", 6451);
-//        PlayerScore score3 = new PlayerScore("Harrold", 999);
-//        PlayerScore score4 = new PlayerScore("James", 5246);
+//        PlayerScore score1 = new PlayerScore("jon", 1);
+//        PlayerScore score2 = new PlayerScore("Mike", 2);
+//        PlayerScore score3 = new PlayerScore("Harrold", 3);
+//        PlayerScore score4 = new PlayerScore("James", 4);
 //        
 //        scores.add(score1);
 //        scores.add(score2);
@@ -34,7 +34,7 @@ public class HighScore implements IHighScore, Serializable {
 //        scores.add(score4);
     }
     
-    public void viableForHighscore(PlayerScore score){
+    public boolean viableForHighScore(PlayerScore score){
         
         scores.add(score);
         
@@ -43,17 +43,18 @@ public class HighScore implements IHighScore, Serializable {
             scores.remove(4);
         }
         
-        
-        if(scores.contains(score)){
-            System.out.println("You don't suck, congratz");
-        }
         for(IScore p: scores){
             System.out.println(p.getName() + " " + p.getScore());
         }
-        
+        if(scores.contains(score)){
+            System.out.println("You don't suck, congratz");
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    @Override
+    
     public ArrayList<IScore> getScores() {
         return this.scores;
     }
