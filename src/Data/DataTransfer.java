@@ -20,12 +20,14 @@ public class DataTransfer implements IDataTransfer, Serializable{
     private HashMap<String, IRoom> rooms;
     private IRoom currentRoom;
     private IPlayer player;
+    private IRoom guardRoom;
     
     
-    DataTransfer(IPlayer player, IRoom room, HashMap<String, IRoom> rooms) {
+    DataTransfer(IPlayer player, IRoom room, HashMap<String, IRoom> rooms, IRoom guardRoom) {
         this.currentRoom = room;
         this.player = player;
         this.rooms = rooms;
+        this.guardRoom = guardRoom;
     }
 
     @Override
@@ -41,6 +43,11 @@ public class DataTransfer implements IDataTransfer, Serializable{
     @Override
     public IRoom getCurrentRoom() {
         return this.currentRoom;
+    }
+
+    @Override
+    public IRoom getGuardRoom() {
+        return this.guardRoom;
     }
 
 }

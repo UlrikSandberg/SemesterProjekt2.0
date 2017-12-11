@@ -17,6 +17,7 @@ public interface IDataTransfer {
     IPlayer getPlayer();
     HashMap<String, IRoom> getRooms();
     IRoom getCurrentRoom();
+    IRoom getGuardRoom();
     
 }
 

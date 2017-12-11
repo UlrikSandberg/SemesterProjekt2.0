@@ -233,7 +233,7 @@ public class Game {
     }
     
     public IDataTransfer saveObjects() {
-        IDataTransfer transfer = new DataTransfer(player, currentRoom, listOfRooms);
+        IDataTransfer transfer = new DataTransfer(player, currentRoom, listOfRooms, guardRoom);
                 
         System.out.println("Game saved!");
         return transfer;
@@ -247,17 +247,41 @@ public class Game {
         HashMap<String, IRoom> rooms = transfer.getRooms();
         
         lobby = (Room) rooms.get("lobby");
+        lobby.setImage("/Presentation/AssetsLibrary/Lobby.jpg");
+        lobby.getInhabitant("steve").setImage("/Presentation/AssetsLibrary/ButlerSprite4RealMedAnsigt.png");
         cafeteria = (Room) rooms.get("cafeteria");
+        cafeteria.getInhabitant("cafeteriaLady").setImage("/Presentation/AssetsLibrary/CafeteriaLadySprite.jpg");
+        cafeteria.setImage("/Presentation/AssetsLibrary/Cafeteria.jpg");
         WestHall = (Room) rooms.get("WestHall");
+        WestHall.setImage("/Presentation/AssetsLibrary/Hallway.jpg");
         EastHall = (Room) rooms.get("EastHall");
+        EastHall.setImage("/Presentation/AssetsLibrary/Hallway.jpg");
         MaleRestroom = (Room) rooms.get("MaleRestroom");
+        MaleRestroom.getInhabitant("toilet").setImage("/Presentation/AssetsLibrary/ToiletSprite.gif");
+        MaleRestroom.setImage("/Presentation/AssetsLibrary/ToiletMen.jpg");
         FemaleRestroom = (Room) rooms.get("FemaleRestroom");
+        FemaleRestroom.getInhabitant("talkingToilet").setImage("/Presentation/AssetsLibrary/TalkingToiletSprite.png");
+        FemaleRestroom.setImage("/Presentation/AssetsLibrary/ToiletWomen.jpg");
         office = (Room) rooms.get("office"); 
+        office.getInhabitant("officeGuy").setImage("/Presentation/AssetsLibrary/OfficeGuySprite.png");
+        office.setImage("/Presentation/AssetsLibrary/officeRoom.jpg");
         copyRoom = (Room) rooms.get("copyRoom");
+        copyRoom.getInhabitant("maculator").setImage("/Presentation/AssetsLibrary/Maculator.png");
+        copyRoom.setImage("/Presentation/AssetsLibrary/Copyroom.jpg");
         archives = (Room) rooms.get("archives");
+        archives.getInhabitant("taxMan").setImage("/Presentation/AssetsLibrary/TaxManSprite2.0.png");
+        archives.setImage("/Presentation/AssetsLibrary/Archive.jpg");
         money = (Room) rooms.get("money");
+        money.getInhabitant("financeGuy").setImage("/Presentation/AssetsLibrary/financeGuy.png");
+        money.getInhabitant("fire").setImage("/Presentation/AssetsLibrary/Fire.jpg");
+        money.setImage("/Presentation/AssetsLibrary/moneyRoom.jpg");
         utillity = (Room) rooms.get("utility");
+        utillity.getInhabitant("janitor").setImage("/Presentation/AssetsLibrary/Janitor.png");
+        utillity.setImage("/Presentation/AssetsLibrary/Utillity.jpg");
        
+        guardRoom = (Room) transfer.getGuardRoom();
+        guardRoom.getInhabitant("guard").setImage("/Presentation/AssetsLibrary/Guard.png");
+        
         player = (Player) transfer.getPlayer();
         
         currentRoom = (Room) transfer.getCurrentRoom();

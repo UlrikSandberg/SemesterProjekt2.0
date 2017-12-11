@@ -24,7 +24,7 @@ public class Room implements Serializable, IRoom
     private HashMap<String, IItem> roomContent;
     private HashMap<String, INPC> inhabitants;
     private HashMap<DirectionType, INPC> exitBlocks;
-    private Image image;
+    private transient Image image;
     public Room(String description, String filePath) 
     {
         this.description = description;
@@ -202,6 +202,11 @@ public class Room implements Serializable, IRoom
     @Override
     public Image getImage() {
         return this.image;
+    }
+
+    
+    public void setImage(String filepath) {
+        this.image = new Image(getClass().getResourceAsStream(filepath));
     }
 
     

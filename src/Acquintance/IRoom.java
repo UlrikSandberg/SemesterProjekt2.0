@@ -24,7 +24,7 @@ public interface IRoom {
     public void addItemToRoom(IItem item);
     public ArrayList<INPC> getRoomNPCS();
     public void setInhabitant(String subjectname, INPC npc);
-
+    public INPC getInhabitant(String subjectname);
     public void setExitBlock(DirectionType direction, INPC exitBlock);     
     
     

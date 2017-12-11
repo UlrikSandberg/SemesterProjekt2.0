@@ -23,7 +23,7 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     private Item item;
     private Item itemCriteria;
     private String name;
-    private Image image;
+    private transient Image image;
     
     protected NPC(String name, String filePath) {
         this.name = name;
@@ -88,5 +88,9 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     
     public Image getImage() {
         return this.image;
+    }
+    
+    public void setImage(String filepath){
+        this.image = new Image(getClass().getResourceAsStream(filepath));
     }
 }
