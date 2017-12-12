@@ -170,9 +170,4 @@ public class BussinessFacade implements IBussiness {
         game.getHighscore().viableForHighScore(playerscore);
     }
 
-    @Override
-    public void checkHighscore() {
-        game.getPlayer().getPlayerName();
-    }
-
 }
