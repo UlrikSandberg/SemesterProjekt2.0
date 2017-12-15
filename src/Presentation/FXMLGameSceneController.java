@@ -178,6 +178,11 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Loads Player inventory to listview
+    /**
+     * 
+     * Display the current players inventory content and displays toString method in a listview
+     * 
+     */
     private void setInventoryList() {
 
         //Fetch current buildings
@@ -198,6 +203,12 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Player movement in GUI
+    /**
+     * 
+     * goRight is one of 4 go methods which all moves the player 20 pixels in 
+     * the respective direction. Go right allocate player + 20 pixels on the x-axis.
+     * 
+     */
     private void goRight() {
 
         double newY = this.player.getBoundsInParent().getMinY();
@@ -249,6 +260,14 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Collition detection to activate NPC interaction with Player
+    /**
+     * 
+     * Detects if the currentPlayers ImageView node collides with either
+     * doors, items or NPC. If Collision is true with exits -> goNextRoom is called.
+     * If collision with NPC is true -> dialogueScene is called
+     * If Collision with items -> takeItem is called
+     * 
+     */
     private void detectCollision() {
 
         if (player.getBoundsInParent().intersects(eastDoor.getBoundsInParent())) {
@@ -325,6 +344,13 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Dialogue-popup scene
+    /**
+     * 
+     * When engaging a NPC, this start the dialogueScene and begin the dialogue loop
+     * 
+     * @param npc the NPC which we are about to start dialogue with
+     * @param player the current player
+     */
     private void dialogueScene(INPC npc, IPlayer player) {
 
         System.out.println("Should open dialogue box for npc: " + npc.getName());
@@ -344,6 +370,17 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Dialogue between NPC and Player + Win/Lose-scene
+    /**
+     * 
+     * Controller of the dialogue loop, each time we call this method it as an answer to
+     * the current dialogue, and we call this method with an answer to the previous loop
+     * 
+     * 
+     * @param currentDialogue the current dialogue block fetched from businessLayer
+     * respective to the NPC current dialogueBlockState
+     * @param answer the answer the player has given the current active dialogue
+     * @param player the current player.
+     */
     private void DialogueLoop(IDialogueBlock currentDialogue, String answer, Player player) {
 
         //Change state according to the given answer
@@ -415,6 +452,15 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Options for leaving current room
+    
+    
+    /**
+     * 
+     * Render the current view, by downloading list of NPC, Exits, Items.
+     * Rendering the different objects require calls to spawn NPC, spawn items
+     * 
+     * 
+     */
     private void setExits() {
 
         System.out.println("Setting exits");
@@ -498,6 +544,14 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Spawns respective NPC('s) when entering a new room
+    /**
+     * 
+     * Spawns and NPC on the anchorScene. It offsets the next NPC by amount * the
+     * NPC number. As far as possible the NPC is spawned at the side with no doors.
+     * 
+     * @param npc the npc which we want spawned on the scene
+     * @param number the number of the particular NPC
+     */
     private void spawnNPCOnScene(INPC npc, int number) {
 
         ImageView newImage = new ImageView(npc.getImage());
@@ -524,6 +578,13 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Despawns the Items from current room when going to a new room
+    /**
+     * 
+     * Find the corresponding ImageView to the respective item and removes the node
+     * from the gameAnchor scene.
+     * 
+     * @param item Item to remove from scene
+     */
     private void removeItemFromScene(IItem item) {
 
         ImageView itemToRemove = this.itemNodes.get(item);
@@ -531,6 +592,14 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Despawns the NPC when going to new scene
+    /**
+     * 
+     * Finds the corresponding ImageView to the respective NPC and removes the node
+     * from the gameAnchor scene.
+     * 
+     * @param npc NPC to remove from scene
+     * 
+     */
     private void removeNPCFromScene(INPC npc) {
 
         ImageView itemToRemove = this.NPCNodes.get(npc);
@@ -543,6 +612,14 @@ public class FXMLGameSceneController implements Initializable {
     }
 
     //Spawn Items in current room
+    /**
+     * 
+     * Spawn the desired item on the scene. The item will be spawned randomly
+     * within bounds of the screen matching the inner rectangle of the exit doors.
+     * 
+     * 
+     * @param item the items whitch we desire to spawn on the scene
+     */
     private void spawnItemOnScene(IItem item) {
 
         ImageView newImage = new ImageView(new Image(getClass().getResourceAsStream("/Presentation/AssetsLibrary/Key-PNG-Image.png")));
