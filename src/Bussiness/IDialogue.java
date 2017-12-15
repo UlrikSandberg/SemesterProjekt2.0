@@ -13,7 +13,30 @@ import Acquintance.IDialogueBlock;
  */
 public interface IDialogue {
     
+    /**
+     * Represents the first dialogue phase of an NPC. 
+     * @param player the player currently playing the game, important because 
+     * player has some information that needs to be checked or manipulated in 
+     * the method. 
+     * @return a DialogueBlock is returned upon call
+     */
     IDialogueBlock firstContact(Player player);
+    
+    /**
+     * Represents the second dialogue phase of an NPC. 
+     * @param player the player currently playing the game, important because 
+     * player has some information that needs to be checked or manipulated in 
+     * the method. 
+     * @return a DialogueBlock is returned upon call
+     */
     IDialogueBlock secondContact(Player player);
+    
+    /**
+     * Represents the third dialogue phase of an NPC. 
+     * @param player the player currently playing the game, important because 
+     * player has some information that needs to be checked or manipulated in 
+     * the method. 
+     * @return a DialogueBlock is returned upon call
+     */
     IDialogueBlock thirdContact(Player player);
 }
