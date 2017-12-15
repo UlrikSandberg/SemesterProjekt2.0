@@ -80,8 +80,8 @@ public interface IBussiness {
     
     /**
      * 
-     * Used to retreive all items currently represented in the players inventory,
-     * happends by iterating the players inventory.
+     * Used to retrieve all items currently represented in the players inventory,
+     * happens by iterating the players inventory.
      * 
      * @return an array of type IItem consisting of all the items currently represented in the 
      * players inventory
