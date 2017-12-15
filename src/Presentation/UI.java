@@ -22,6 +22,14 @@ public class UI extends Application implements IGUI {
     private static UI ui;
     private IBussiness business;
     
+    /**
+     * 
+     * Get an instance of the UI class equivalent to a presentationFacade, use this to
+     * distribute the acquintance of the businessFacade to various FXML controller not
+     * directly connected to the businessFacade
+     * 
+     * @return an instance of the instantiate UI object.
+     */
     public static UI getInstance() {
         return ui;
     }
@@ -29,6 +37,7 @@ public class UI extends Application implements IGUI {
     Stage window;
     Parent parent1, parent2;
     Scene scene1, scene2;
+    
     
     
     @Override
@@ -57,7 +66,13 @@ public class UI extends Application implements IGUI {
         ui = this;
         launch(args);
     }
-    
+    /**
+     * 
+     * Distribute the businessFacade to other FXMLControllers in order for diferent FXMLScenes
+     * to access the businessLayer.
+     * 
+     * @return an instance of the business facade. See injectBusiness for origins
+     */
     public IBussiness getBusiness() {
         return business;
     }
