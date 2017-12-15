@@ -64,6 +64,13 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
     public void setQuest(Quest quest) {
         this.quest = quest;
     }
+    
+    /**
+     * 
+     * Acessor method for the quest which the NPC is able to give away
+     * 
+     * @return the quest which take the player further in the quest line
+     */
     public Quest getQuest() {
         return this.quest;
     }
@@ -72,6 +79,13 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
         this.criteria = quest;
     }
     
+    /**
+     * 
+     * return the quest which you must have in order to move forward in the questline
+     * 
+     * 
+     * @return the questiCriteria 
+     */
     public Quest getCriteria() {
         return this.criteria;
     }
@@ -84,9 +98,19 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
         this.itemCriteria = item;
     }
     
+    /**
+     * 
+     * @return the item of which has been set as criteria for completion of task
+     */
     public Item getItemCriteria() {
         return this.itemCriteria;
     }
+    
+    /**
+     * 
+     * @return the item of which is suppost to be passed on after completion of tasks
+     * 
+     */
     public Item getItem() {
         return this.item;
     }
