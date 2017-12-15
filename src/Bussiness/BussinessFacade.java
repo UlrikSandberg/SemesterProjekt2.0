@@ -162,12 +162,12 @@ public class BussinessFacade implements IBussiness {
         return game.getExitBlock(direction);
 
     }
-
+    
     @Override
     public void checkHighscore() throws IOException, FileNotFoundException, ClassNotFoundException {
         loadHighscore();
         PlayerScore playerscore = new PlayerScore(game.getPlayerRoot().getPlayerName(), game.getPlayerRoot().getScore().getTotalScore());
         game.getHighscore().viableForHighScore(playerscore);
     }
-
+   
 }
