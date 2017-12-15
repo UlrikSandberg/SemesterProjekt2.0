@@ -39,7 +39,7 @@ public interface IBussiness {
      * 
      * @param direction the direction of type DirectionType, which indicate 
      * which direction the player wants to go.
-     * @return a boolean value indicating wether the player was succesfull at switching rooms
+     * @return a boolean value indicating weather the player was successful at switching rooms
      */
     
     Boolean goNextRoom(DirectionType direction);
