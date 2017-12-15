@@ -119,7 +119,7 @@ public interface IBussiness {
      * Picks up a room item.
      * 
      * @param item the item which the user would like to pick up.
-     * @return a boolean value indicate if the player was succesfull retreiving the room item
+     * @return a boolean value indicate if the player was successful retrieving the room item
      */
     Boolean takeItem(IItem item);
     
@@ -133,7 +133,7 @@ public interface IBussiness {
     
     /**
      * 
-     * Get a list of all the NPCS currently residing withing the room respective to the
+     * Get a list of all the NPCS currently residing within the room respective to the
      * players currentRoom
      * 
      * @return a ArrayList of type INPC of all the current room NPCS
