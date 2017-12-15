@@ -51,7 +51,12 @@ public abstract class NPC implements IDialogue, IGuard, Serializable, INPC {
         return this.name;
     }
     
-    
+    /**
+     * 
+     * Increment the current dialogue state, use method when change to next
+     * dialogue block is desired.
+     * 
+     */
     public void changeState() {
         this.state += 1;
     }
