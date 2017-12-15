@@ -13,7 +13,7 @@ public class Parser
     private Scanner reader;
 
     public Parser() 
-    {
+    { 
         commands = new CommandWords();
         reader = new Scanner(System.in);
     }
