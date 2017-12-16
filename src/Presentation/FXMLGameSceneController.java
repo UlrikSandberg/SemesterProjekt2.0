@@ -535,12 +535,15 @@ public class FXMLGameSceneController implements Initializable {
             this.roomNPCS.add(npc);
             this.spawnNPCOnScene(npc, numberOfNPCS);
         }
-
+        
         this.setInventoryList();
 
         //Set player in the middle of the screen!
         player.relocate(500, 200);
 
+        if(listOfNPCS.contains(business.getGuard())) {
+            dialogueScene(business.getGuard(), business.getPlayer());
+        }
     }
 
     //Spawns respective NPC('s) when entering a new room

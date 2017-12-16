@@ -26,6 +26,7 @@ public class Game {
     */
     private Room currentRoom;
     private Room guardRoom;
+    private INPC theGuard;
     private Player player;
     private ArrayList<IRoom> guardRooms;
     private IHighScore highscore;
@@ -162,6 +163,7 @@ public class Game {
         fire = new Fire("Fire","/Presentation/AssetsLibrary/Fire.jpg");
         financeGuy = new FinanceGuy("Finance Guy","/Presentation/AssetsLibrary/financeGuy.png");
         guard = new Guard("Guard","/Presentation/AssetsLibrary/Guard.png");
+        theGuard = guard;
         wornLock = new WornLock("Worn Lock","/Presentation/AssetsLibrary/Lock.png");
         toilet = new Toilet("Toilet","/Presentation/AssetsLibrary/ToiletSprite.gif");
         talkingToilet = new TalkingToilet("Talking Toilet","/Presentation/AssetsLibrary/TalkingToiletSprite.png");
@@ -717,6 +719,10 @@ public class Game {
         } else { 
              currentSubject.dialogue(this.player);
         }
+    }
+    
+    public INPC getGuard() {
+        return this.theGuard;
     }
     
     //Check if the game really should end :)

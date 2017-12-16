@@ -171,5 +171,9 @@ public interface IBussiness {
      */
     void checkHighscore()throws IOException, FileNotFoundException, ClassNotFoundException;
     
-    
+    /**
+     * 
+     * @return a representation of the guard.
+     */
+    INPC getGuard();
 }

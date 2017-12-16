@@ -169,5 +169,10 @@ public class BussinessFacade implements IBussiness {
         PlayerScore playerscore = new PlayerScore(game.getPlayerRoot().getPlayerName(), game.getPlayerRoot().getScore().getTotalScore());
         game.getHighscore().viableForHighScore(playerscore);
     }
+
+    @Override
+    public INPC getGuard() {
+        return game.getGuard();
+    }
    
 }
