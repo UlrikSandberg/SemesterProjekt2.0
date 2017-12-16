@@ -36,6 +36,12 @@ public class Room implements Serializable, IRoom
         this.image = this.image = new Image(getClass().getResourceAsStream(filePath)); 
     }
 
+    /**
+     * maps a neighbor to a direction. 
+     * @param direction a direction that determines which way out of the room. 
+     * @param neighbor the room adjacent to the room 
+     * that corresponds to the given direction. 
+     */
     public void setExit(DirectionType direction, Room neighbor) 
     {
         exits.put(direction, neighbor);
@@ -46,6 +52,10 @@ public class Room implements Serializable, IRoom
         inhabitants.put(subjectname, inhabitant);
     }
     
+    /**
+     * unmaps an NPC in the room corresponding to subjectname. 
+     * @param subjectname a string that refers to an NPC. 
+     */
     public void removeInhabitant(String subjectname) 
     {
         inhabitants.remove(subjectname);
@@ -56,11 +66,20 @@ public class Room implements Serializable, IRoom
         exitBlocks.put(direction, exitBlock);
     }
     
+    /**
+     * unmaps an NPC as roadblock in the given direction. 
+     * @param direction a direction that determines which way out of the room. 
+     */
     public void removeExitBlock(DirectionType direction) 
     {
         exitBlocks.remove(direction);
     }
     
+    /**
+     * gets the NPC that serves as a roadblock in the given direction. 
+     * @param direction a direction that determines which way out of the room. 
+     * @return an NPC. 
+     */
     public INPC getExitBlock(DirectionType direction) 
     {
         return exitBlocks.get(direction);
@@ -103,7 +122,13 @@ public class Room implements Serializable, IRoom
         }
         return returnString;
     }
-    */    
+    */   
+    
+    /**
+     * gets a string generated from the NPC's located in the room. 
+     * that does not serve as roadblocks. 
+     * @return a string. 
+     */
     public String getInhabitantString()
     {
         String returnString = "Inhabitants:";
@@ -114,6 +139,10 @@ public class Room implements Serializable, IRoom
         return returnString;
     }
     
+    /**
+     * gets a string generated from the items contained within the room. 
+     * @return a string. 
+     */
     public String getRoomContentString(){
         String returnString = "Items in room: ";
         Set<String> keys = roomContent.keySet();
@@ -123,7 +152,14 @@ public class Room implements Serializable, IRoom
         return returnString;
     }
     
-    //Acces the hashMap and check if any exits corresponds to the given exit string
+    //Acces the hashMap and check if any exits corresponds 
+    //to the given exit string. 
+    /**
+     * Accesses the hashMap of exits and checks if any room's 
+     * corresponds to the given direction. 
+     * @param direction a direction that determines which way out of the room. 
+     * @return a Room that is a point of exit. 
+     */
     public Room getExit(DirectionType direction) 
     {
         return exits.get(direction);
@@ -135,12 +171,21 @@ public class Room implements Serializable, IRoom
     }
     
     //Only use if safe
+    /**
+     * removes an item from the list of items in the room corresponding to the string. 
+     * @param string could have been called "itemName", 
+     * a string that refers to an item. 
+     */
     public void removeItemFromRoom(String string) {
         
         this.roomContent.remove(string);
         
     }
     
+    /**
+     * removes an item from the list of item's in the room that is identical to the item given. 
+     * @param item an item. 
+     */
     public void removeItemFromRoom(IItem item) {
         System.out.println("This is nice");
         this.roomContentArray.remove(item);
@@ -155,11 +200,20 @@ public class Room implements Serializable, IRoom
         this.roomContentArray.add(item);
     }
     
+    /**
+     * gets an item from the list item's that corresponds to the given itemName. 
+     * @param itemName a string that refers to an item. 
+     * @return an Item. 
+     */
     public IItem getItem(String itemName) {
         
        return this.roomContent.get(itemName);
     }
     
+    /**
+     * prints to the console all by itself, 
+     * the items that is contained within the list of item's in the room. 
+     */
     public void getRoomContennt() {
         
         
@@ -204,7 +258,10 @@ public class Room implements Serializable, IRoom
         return this.image;
     }
 
-    
+    /**
+     * sets an image from a filepath to the attribute that has image in the room. 
+     * @param filepath to the image that corresponds to this room. 
+     */
     public void setImage(String filepath) {
         this.image = new Image(getClass().getResourceAsStream(filepath));
     }
