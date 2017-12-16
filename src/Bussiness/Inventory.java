@@ -24,11 +24,18 @@ public class Inventory implements Serializable{
         
     }
     
-    
+    /**
+     * 
+     * @return a ArrayList of type IItem with all the item currently presented by the inventory
+     */
     public ArrayList<IItem> getAllItems() {
         return this.inventory;
     }
     
+    /**
+     * 
+     * @return an array of type Iitem with all the items currently presented by the inventory
+     */
     public IItem[] getAllItems1() {
         
         IItem[] list = new IItem[this.inventory.size()];
@@ -36,6 +43,15 @@ public class Inventory implements Serializable{
         
     }
     
+    /**
+     * 
+     * add a item to the inventory. Some inventory have a max capacity. Returns a
+     * boolean value to indicate if the capacity has been reached and thereby fail
+     * completing the operation
+     * 
+     * @param newItem the item to be added to the inventory
+     * @return a boolean value indicating if the operation was succesfull
+     */
     public boolean addToInventory(IItem newItem){        // Adds an item to the inventory ArrayList, 
         if(inventory.size() < this.roomCapacity){                      //if the inventory has not met the max capacity.
             inventory.add(newItem);                     //If the max capacity is met the method returns false.
@@ -46,6 +62,14 @@ public class Inventory implements Serializable{
         }   
     }
     
+    /**
+     * 
+     * remove a item from the inventory. If the method is used to remove an item
+     * which is not currently presentd in the inventory return false
+     * 
+     * @param newItem item to remove from inventory
+     * @return a boolean value indicating wether the operation was succesfull
+     */
     public boolean removeFromInventory(IItem newItem){   //Removes an item from the inventory
         if(inventory.contains(newItem)){                //if the inventory does contain it.
             inventory.remove(newItem);                  //If the inventory does not contain the item the method returns false
@@ -59,7 +83,11 @@ public class Inventory implements Serializable{
     }
     
 
-    
+    /**
+     * 
+     * @param newItem item to check if contained in the inventory
+     * @return a boolean value indicating whether the item is contained with in or not
+     */
     public boolean inventoryDoesContain(Item newItem){  //Checks if the inventory contains a specific item
         System.out.println("does contained was called");
         System.out.println(newItem.getName());
@@ -81,7 +109,9 @@ public class Inventory implements Serializable{
         
         return inventory.contains(newItem);
     }
-    
+    /**
+     * System.out.print the contents of the inventory by each items.getName().
+     */
     public void inventoryContents(){                    //Prints out the contents of the inventory
         System.out.println("Inventory contains: ");
         int i = 0;
@@ -93,6 +123,15 @@ public class Inventory implements Serializable{
     }
     
     //Only call if you are sure that the index exists
+    /**
+     * 
+     * Returns and item at specified index + 1. Should only be used if we have first
+     * confirmed the presence of an item on the desired index, else the method throws
+     * and exception
+     * 
+     * @param index index of a particular item in the inventory arraylist
+     * @return an IItem if such exits on the specified index
+     */
     public IItem getItemAtIndex(int index) {
       
         return inventory.get(index - 1);

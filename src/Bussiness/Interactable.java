@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 
 /**
- * @author  ?
+ * @author  Deprecated
  * @version 2006.03.30
  */
 public class Interactable 

@@ -41,24 +41,44 @@ public class Quest implements Serializable{
         this.initialized = initialized;
         this.completed = false;
     }
-          
+         
+    /**
+     * Set this quest progress state as initialized
+     */
     public void setInitialized(){
         initialized = true;
     }
     
+    /**
+     * 
+     * @return a boolean value indicating whether this quest is initialized
+     */
     public boolean getInitialized(){
         return initialized;
     }
     
+    /**
+     * Set this quest progress state as completed
+     */
     public void setCompleted(){
         completed = true;   
         
     }
     
+    /**
+     * 
+     * Hand the quest an receive the points awarded for completion
+     * 
+     * @return the number of points awarded by the quest
+     */
     public int turnQuest() {
         return this.points;
     } 
     
+    /**
+     * 
+     * @return boolean value indicating if the quest is completed or not
+     */
     public Boolean isCompleted() {
         if (this.completed == true) {
             return true;
@@ -67,15 +87,30 @@ public class Quest implements Serializable{
         }
     }
     
+    /**
+     * 
+     * @param criteria an item which is needed to complete the quest
+     */
     public void setCriteria(Item criteria) {
         
         this.criteria = criteria;
     }
     
+    /**
+     * 
+     * @return the item which is this quest completion criteria
+     */
     public Item getCriteria() {
         return this.criteria;
     }
     
+    /**
+     * 
+     * Check if the player got the items need to complete the quest
+     * 
+     * @param player the current player 
+     * @return a boolean value indicating if the player meets the criteria of the quest
+     */
     public Boolean questCriteriaIsMet(Player player) {
         
         if(player.getInventory().inventoryDoesContain(this.criteria) == true) {
@@ -86,14 +121,27 @@ public class Quest implements Serializable{
             return false;
         }   
     }
+    
+    /**
+     * 
+     * @return a boolean value of completed boolean
+     */
     public boolean getCompleted(){
         return completed;
     }
     
+    /**
+     * 
+     * @return a question string name 
+     */
     public String getName() {
         return this.name;
     }
     
+    /**
+     * 
+     * @return a description of the quest as a string.
+     */
     public String getDescription() {
         return this.description;
     }

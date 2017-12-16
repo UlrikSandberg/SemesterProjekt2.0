@@ -11,9 +11,25 @@ package Acquintance;
  */
 public interface IPlayer {
     
-    
+    /**
+     * 
+     * 
+     * @return  the currentPlayer name as string
+     */
     String getPlayerName();
+    
+    /**
+     * 
+     * Get a list of all the Items contained in the currentPlayer inventory
+     * 
+     * @return an array of IItems
+     */
     IItem[] getInventoryItems();
+    
+    /**
+     * 
+     * @return the room respective to the currentPlayers room.
+     */
     IRoom getPlayerRoom();
     
     

@@ -18,6 +18,13 @@ public class Parser
         reader = new Scanner(System.in);
     }
 
+    /**
+     * 
+     * Method initialisez the console line for retreiving a command. Read the two
+     * first words and compares them to the registries of commands.
+     * 
+     * @return a Command object instantiated from
+     */
     public Command getCommand() 
     {
         String inputLine;

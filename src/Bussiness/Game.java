@@ -74,6 +74,10 @@ public class Game {
     }
 
     //createRoom method creates the game enviroment, which so far is five rooms.
+    /**
+     * Create and instantiate all objects for to run the game. Includes wirering the
+     * instantiate pieces together with mutators and accesors.
+     */
     private void createObjects()
     {
                 
@@ -231,7 +235,11 @@ public class Game {
         listOfRooms.put("utility", utillity);
         player.getScore().beginTimer();
     }
-    
+    /**
+     * Mark burde skrive det her ;)
+     * 
+     * @return 
+     */
     public IDataTransfer saveObjects() {
         IDataTransfer transfer = new DataTransfer(player, currentRoom, listOfRooms, guardRoom, guardRooms);
                 
@@ -239,7 +247,10 @@ public class Game {
         return transfer;
     }
     
-    
+    /**
+     * Mark burde skrive det her
+     * @param transfer 
+     */
     public void loadObjects(IDataTransfer transfer) {
         
         player.getScore().pauseTimer();
@@ -295,31 +306,53 @@ public class Game {
         //System.out.println(currentRoom.getLongDescription());
     }
 
+    /**
+     * 
+     * The exit NPC blocking a door. If move fail this methods returns the 
+     * respective NPC blocking the path
+     * 
+     * @param direction
+     * @return The INPC blocking a path for the given direction param
+     */
     public INPC getExitBlock(DirectionType direction) {
         
         return currentRoom.getExitBlock(direction);
         
     }
     
-    
+    /**
+     * 
+     * @return the current player
+     */
     IPlayer getPlayer() {
         return this.player;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public Player getPlayerRoot() {
         return this.player;
     }
     
+    /**
+     * 
+     * @return the players currentRoom
+     */
     IRoom getCurrentRoom() {
         return this.currentRoom;
     }
     
     
     //Execute play method - Invoked from StartGame.java
+    /**
+     * Deprecated. Begin the game loop
+     */
     public void play() 
     {            
-                printWelcome();//Execute printWelcome method.
-                this.player.getScore().beginTimer();
+        printWelcome();//Execute printWelcome method.
+        this.player.getScore().beginTimer();
 
         //Setting gameState as a boolean value, in can determine game state by true and false
         boolean finished = false; //False game state means the game is running
@@ -426,6 +459,12 @@ public class Game {
     }
 
     //Decide which room we should go to if any at all?
+    /**
+     * Move the player in the direction respective to the directionType(east, west
+     * , north, south)
+     * @param direction of type DirectionType(east, south, north, west)
+     * @return a boolean indicating whether the moving the player to another room was succesfull
+     */
     public Boolean goRoom(DirectionType direction) 
     {
         //Acces the command object and use its hasSecondWord method to received boolean - If true
@@ -475,6 +514,12 @@ public class Game {
        return false;
     }
     
+    /**
+     * 
+     * Deprecated. 
+     * 
+     * @param command 
+     */
     private void showContent(Command command) {
         
         //Acces the command object and use its hasSecondWord method to received boolean - If true
@@ -606,7 +651,12 @@ public class Game {
         
     }
     
-    
+    /**
+     * 
+     * Deprecated take a room object
+     * 
+     * @param command 
+     */
     public void takeRoomObject(Command command) {
         
          if(!command.hasSecondWord()) {
@@ -640,7 +690,12 @@ public class Game {
     public IHighScore getHighscore(){
         return highscore;
     }
-    
+    /**
+     * 
+     * Mark burde skrive her
+     * 
+     * @param loadHighScore 
+     */
     void loadHighscore(IHighScore loadHighScore) {
         highscore = loadHighScore;
     }
