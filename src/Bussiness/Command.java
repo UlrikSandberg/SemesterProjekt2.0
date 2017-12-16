@@ -16,21 +16,37 @@ public class Command
         this.secondWord = secondWord;
     }
 
+    /**
+     * 
+     * @return the commandword of type commandWords enum from this comman
+     */
     public CommandInterface getCommandWord()
     {
         return commandWord;
     }
 
+    /**
+     * 
+     * @return the commandWord objects secondWrod of type string
+     */
     public String getSecondWord()
     {
         return secondWord;
     }
 
+    /**
+     * 
+     * @return a boolean value indicating if the command word is Unknown
+     */
     public boolean isUnknown()
     {
         return (commandWord == CommandWord.UNKNOWN);
     }
 
+    /**
+     * 
+     * @return a boolean value indicating if the command object has a second word
+     */
     public boolean hasSecondWord()
     {
         return (secondWord != null);

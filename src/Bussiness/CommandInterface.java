@@ -11,6 +11,10 @@ package Bussiness;
  */
 public interface CommandInterface {
     
+    /**
+     * 
+     * @return a string representation of the command word
+     */
     String toString();
      
 }

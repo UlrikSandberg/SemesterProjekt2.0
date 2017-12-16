@@ -41,6 +41,11 @@ public class CommandWords
 
     //This method returns a commandWord if such exists in the class's constructed hashMap of valid commands
     //if no such exists return the command word UNKNOWN.
+    /**
+     * 
+     * @param commandWord a string representation of the commandword
+     * @return the commandword respective to the param commandWord String
+     */
     public CommandWord getCommandWord(String commandWord)
     {
         //Set command equal to the command inside the hashMap which corrosponds to the received commandWord.
@@ -53,6 +58,13 @@ public class CommandWords
         }
     }
     
+    /**
+     * 
+     * 
+     * 
+     * @param commandWord a string representation of the showCommands word
+     * @return the showCommand respective to the param commandWord String
+     */
     public showCommands getSecondCommandWord(String commandWord) {
         
         showCommands command = secondCommands.get(commandWord);
@@ -70,6 +82,9 @@ public class CommandWords
         return validCommands.containsKey(aString);
     }
 
+    /**
+     * System.out.print all of valid commands
+     */
     public void showAll() 
     {
         for(String command : validCommands.keySet()) {
